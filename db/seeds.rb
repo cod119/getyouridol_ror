@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+json = ActiveSupport::JSON.decode(File.read('db/seeds/Namuami_withoutno.json'))
+json.each do |a|
+  list = a.symbolize_keys
+  Idol.create(list.slice(:nameko,:nameja,:nameen,:age,:productionorunit))
+end

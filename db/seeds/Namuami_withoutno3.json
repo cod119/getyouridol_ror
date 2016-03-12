@@ -1,0 +1,66 @@
+
+[
+    {
+        "nameko" : "아마미 하루카",
+        "nameja" : "\u5929\u6D77\u6625\u9999",
+        "nameen" : "Haruka Amami",
+        "age"    : 17,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uD0A4\uC0AC\uB77C\uAE30 \uCE58\uD558\uC57C",
+        "nameja" : "\u5982\u6708\u5343\u65E9",
+        "nameen" : "Chihaya Kisaragi",
+        "age"    : 16,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uD558\uAE30\uC640\uB77C \uC720\uD0A4\uD638",
+        "nameja" : "\u8429\u539F\u96EA\u6B69",
+        "nameen" : "Yukiho Hagiwara",
+        "age"    : 17,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uD0A4\uCFE0\uCE58 \uB9C8\uCF54\uD1A0",
+        "nameja" : "\u83CA\u5730\u771F",
+        "nameen" : "Makoto Kikuchi",
+        "age"    : 17,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uD638\uC2DC\uC774 \uBBF8\uD0A4",
+        "nameja" : "\u661F\u4E95\u7F8E\u5E0C",
+        "nameen" : "Miki Hoshii",
+        "age"    : 15,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uBBF8\uC6B0\uB77C \uC544\uC988\uC0AC",
+        "nameja" : "\u4E09\u6D66\u3042\u305A\u3055",
+        "nameen" : "Azusa Miura",
+        "age"    : 21,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uC2DC\uC8E0 \uD0C0\uCE74\uB124",
+        "nameja" : "\u56DB\u6761\u8CB4\u97F3",
+        "nameen" : "Takane Shijou",
+        "age"    : 18,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uAC00\uB098\uD558 \uD788\uBE44\uD0A4",
+        "nameja" : "\u6211\u90A3\u8987\u97FF",
+        "nameen" : "Hibiki Ganaha",
+        "age"    : 16,
+        "productionorunit" : "765PRO ALLSTARS"
+    },
+    {
+        "nameko" : "\uBBF8\uB098\uC138 \uC774\uC624\uB9AC",
+        "nameja" : "\u6C34\u702C\u4F0A\u7E54",
+        "nameen" : "Iori Minase",
+        "age"    : 15,
+        "productionorunit" : "765PRO ALLSTARS"
+    }
+ ]

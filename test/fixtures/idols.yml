@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name_ko: \uC544\uB9C8\uBBF8 \uD558\uB8E8\uCE74
+  name_ja: \u5929\u6D77\u6625\u9999
+  name_en: Haruka Amami
+  age: 17
+  production_or_unit: 765PRO ALLSTARS
+
+two:
+  id: 2
+  name_ko: \uD0A4\uC0AC\uB77C\uAE30 \uCE58\uD558\uC57C
+  name_ja: \u5982\u6708\u5343\u65E9
+  name_en: Chihaya Kisaragi
+  age: 16
+  production_or_unit: 765PRO ALLSTARS
