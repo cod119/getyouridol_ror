@@ -1,7 +1,9 @@
 <% @idols.each do |t| %>
-<%=t.nameko%>
-<%=t.nameja%>
-<%=t.nameen%>
-<%=t.age%>
-<%=t.productionorunit%>
+<fieldset>
+	<legend><%=t.nameko%></legend>
+이름(일): <%=t.nameja%></br>
+이름(영): <%=t.nameen%></br>
+나이: <%=t.age%></br>
+소속: <%=t.productionorunit%></br>
+</fieldset>
 <% end %>
