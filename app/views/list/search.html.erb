@@ -1,0 +1,10 @@
+<fieldset>
+	<legend>검색조건</legend>
+	
+	<%= form_tag({controller: :list, action: :result}) do%>
+		소속:
+		<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {include_blank: '모든 값'}%>
+		
+		<%=submit_tag '검색'%>
+	<%end%>
+</fieldset>

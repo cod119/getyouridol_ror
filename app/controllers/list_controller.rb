@@ -3,4 +3,17 @@ class ListController < ApplicationController
      @idols = Idol.all
   end
   
+  def search
+     @productionorunit = Idol.select(:productionorunit).distinct
+     @idol = Idol.new
+  end
+  
+  def result
+    if params[:productionorunit] == ""
+      @idols = Idol.all
+    else
+      @idols = Idol.where(productionorunit: params[:productionorunit])
+    end
+    render action: 'index'
+  end
 end
