@@ -5,5 +5,8 @@
 이름(영): <%=t.nameen%></br>
 나이: <%=t.age%></br>
 소속: <%=t.productionorunit%></br>
+	<% if t.productionorunit2 != t.productionorunit %>
+		소속2: <%=t.productionorunit2%></br>
+	<% end %>
 </fieldset>
 <% end %>

@@ -12,7 +12,8 @@ class ListController < ApplicationController
     if params[:productionorunit] == ""
       @idols = Idol.all
     else
-      @idols = Idol.where(productionorunit: params[:productionorunit])
+      #@idols = Idol.where(productionorunit: params[:productionorunit])
+      @idols = Idol.where('productionorunit = ? OR productionorunit2 = ?', params[:productionorunit], params[:productionorunit])
     end
     render action: 'index'
   end

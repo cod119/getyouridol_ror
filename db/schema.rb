@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20160311153323) do
     t.string   "nameen"
     t.integer  "age"
     t.string   "productionorunit"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "productionorunit2"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

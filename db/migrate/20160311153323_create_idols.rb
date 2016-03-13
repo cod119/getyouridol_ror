@@ -6,6 +6,7 @@ class CreateIdols < ActiveRecord::Migration
       t.string :nameen
       t.integer :age
       t.string :productionorunit
+      t.string :productionorunit2
 
       t.timestamps null: false
     end
