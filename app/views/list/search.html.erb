@@ -8,11 +8,13 @@
 		<%=radio_button_tag('gender', "", checked = true)%>성별무관</br>
 		나이:
 		<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'input_id', include_blank: '모든 값'}%></br>
+		신장:
+		<%=select_tag 'heightMin', options_for_select(@heightMinRangeArray, @heightMinRangeArrayValue.first.to_i)%>cm 이상
+		<%=select_tag 'heightMax', options_for_select(@heightMaxRangeArray, @heightMaxRangeArrayValue.last.to_i)%>cm 미만</br>
+		
 		소속:
 		<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {include_blank: '모든 값'}%></br>
 		
 		<%=submit_tag '검색'%>
 	<%end%>
 </fieldset>
-
-<%= render 'list' %>

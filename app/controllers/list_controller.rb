@@ -7,6 +7,21 @@ class ListController < ApplicationController
      @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
      @idol = Idol.new
      @idols = Idol.all.order(nameko: :asc)
+     
+     #신장
+     @heightRangeArrayRaw = Idol.select(:height).distinct.pluck(:height).flatten
+     @heightMinRaw = (@heightRangeArrayRaw.min / 5).floor
+     @heightMaxRaw = (@heightRangeArrayRaw.max / 5).floor
+     @heightMinRangeArray = {}
+     for val in (@heightMinRaw..@heightMaxRaw)
+       @heightMinRangeArray[val*5] = val*5
+     end
+     @heightMinRangeArrayValue = @heightMinRangeArray.values
+     @heightMaxRangeArray = {}
+     for val in (@heightMinRaw+1..@heightMaxRaw+1)
+       @heightMaxRangeArray[val*5] = val*5
+     end
+     @heightMaxRangeArrayValue = @heightMaxRangeArray.values
   end
   
   def result
@@ -29,12 +44,15 @@ class ListController < ApplicationController
     else
     end
     
+    #신장
+    @idols = @idols.where('height >= ? AND height <= ?', params[:heightMin], params[:heightMax])
+    
     #소속사
     if params[:productionorunit] != ""
       #@idols = Idol.where(productionorunit: params[:productionorunit])
       @idols = @idols.where('productionorunit = ? OR productionorunit2 = ?', params[:productionorunit], params[:productionorunit])
     end
-    render action: 'search'
+    render action: 'index'
   end
 end
 
