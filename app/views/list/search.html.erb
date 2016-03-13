@@ -2,9 +2,15 @@
 	<legend>검색조건</legend>
 	
 	<%= form_tag({controller: :list, action: :result}) do%>
+		성별:
+		<%=radio_button_tag('gender', 'F')%>여성
+		<%=radio_button_tag('gender', 'M')%>남성
+		<%=radio_button_tag('gender', "", checked = true)%>성별무관</br>
 		소속:
 		<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {include_blank: '모든 값'}%>
 		
 		<%=submit_tag '검색'%>
 	<%end%>
 </fieldset>
+
+<%= render 'list' %>

@@ -8,5 +8,5 @@
 json = ActiveSupport::JSON.decode(File.read('db/seeds/Namuami_withoutno_prod2.json'))
 json.each do |a|
   list = a.symbolize_keys
-  Idol.create(list.slice(:nameko,:nameja,:nameen,:age,:productionorunit,:productionorunit2))
+  Idol.create(list.slice(:nameko,:nameja,:nameen,:cv,:gender,:age,:productionorunit,:productionorunit2,:height,:weight,:b,:w,:h,:hobby,:birth,:bloodtype,:hairstyle,:areafrom,:mediafrom,:mediafrom2))
 end

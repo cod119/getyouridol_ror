@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'list#index'
+  root 'list#search'
   get '/search' => 'list#search'
   post '/list/result' => 'list#result'
   # The priority is based upon order of creation: first created -> highest priority.

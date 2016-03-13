@@ -1,12 +1,25 @@
 <% @idols.each do |t| %>
 <fieldset>
 	<legend><%=t.nameko%></legend>
-이름(일): <%=t.nameja%></br>
-이름(영): <%=t.nameen%></br>
-나이: <%=t.age%></br>
-소속: <%=t.productionorunit%></br>
+	이름(일): <%=t.nameja%></br>
+	이름(영): <%=t.nameen%></br>
+	CV: <%=t.cv%></br>
+	성별: <%=t.gender%></br>
+	나이: <%=t.age%></br>
+	소속: <%=t.productionorunit%></br>
 	<% if t.productionorunit2 != t.productionorunit %>
 		소속2: <%=t.productionorunit2%></br>
+	<% end %>
+	키/몸무게: <%=t.height%> / <%=t.weight%></br>
+	사이즈(b/w/h): <%=t.b%> / <%=t.w%> / <%=t.h%></br>
+	취미: <%=t.hobby%></br>
+	생일: <%=t.birth%></br>
+	혈액형: <%=t.bloodtype%></br>
+	헤어스타일: <%=t.hairstyle%></br>
+	출신지: <%=t.areafrom%></br>
+	출신매체: <%=t.mediafrom%>
+	<% if t.mediafrom2 != t.mediafrom %>
+		출신매체2: <%=t.mediafrom2%></br>
 	<% end %>
 </fieldset>
 <% end %>
