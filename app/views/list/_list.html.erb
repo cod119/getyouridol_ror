@@ -1,4 +1,5 @@
 <% @idols.each do |t| %>
+<!--
 <fieldset>
 	<legend><%=t.nameko%></legend>
 	이름(일): <%=t.nameja%></br>
@@ -22,4 +23,76 @@
 		출신매체2: <%=t.mediafrom2%></br>
 	<% end %>
 </fieldset>
+-->
+
+<table border="1" cellspacing="1" cellpadding="5">
+	<thead>
+		<th colspan="6"><%=t.nameko%></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2" scope="row" class="cell_title cell_title_right">이름</td>
+			<td colspan="3" class="cell_content"><%=t.nameen%></td>
+			<td rowspan="4" colspan="2">사진</td>
+		</tr>
+		<tr>
+			<td colspan="3" class="cell_content"><%=t.nameja%></td>
+		</tr>
+		<tr>
+			<td scope="row" class="cell_title cell_title_right">CV</td>	
+			<td colspan="3" class="cell_content"><%=t.cv%></td>
+		</tr>
+		<tr>
+			<td scope="row" class="cell_title cell_title_right">생일</td>	
+			<td colspan="3" class="cell_content"><%=t.birth%></td>
+		</tr>
+		<tr>
+			<td scope="row" rowspan="2" class="cell_title cell_title_right">출신</td>	
+			<td colspan="3"rowspan="2" class="cell_content"><%=t.areafrom%></td>
+			<td scope="col" class="cell_title cell_title_up">성별</td>
+			<td scope="col" class="cell_title cell_title_up">혈액형</td>			
+		</tr>
+		<tr>
+			<td class="cell_content"><%=t.gender%></td>
+			<td class="cell_content"><%=t.bloodtype%>형</td>		
+		</tr>
+		<tr>
+			<td scope="col" class="cell_title cell_title_up">연령</td>
+			<td scope="col" class="cell_title cell_title_up">신장</td>
+			<td scope="col" class="cell_title cell_title_up">체중</td>
+			<td scope="col" class="cell_title cell_title_up">B</td>
+			<td scope="col" class="cell_title cell_title_up">W</td>
+			<td scope="col" class="cell_title cell_title_up">H</td>
+		</tr>
+		<tr>
+			<td class="cell_content"><%=t.age%>세</td>
+			<td class="cell_content"><%=t.height%>cm</td>
+			<td class="cell_content"><%=t.weight%>kg</td>
+			<td class="cell_content"><%=t.b%>cm</td>
+			<td class="cell_content"><%=t.w%>cm</td>
+			<td class="cell_content"><%=t.h%>cm</td>
+		</tr>
+		<tr>
+			<td scope="row" class="cell_title cell_title_right">취미</td>
+			<td colspan="5" class="cell_content"><%=t.hobby%></td>
+		</tr>
+		<tr>
+			<td scope="col" colspan="3" class="cell_title cell_title_up">소속</td>
+			<td scope="col" colspan="3" class="cell_title cell_title_up">출신매체</td>
+		</tr>		
+		<tr>
+			<td colspan="3" class="cell_content"><%=t.productionorunit%>
+				<% if t.productionorunit2 != "0" %>
+				</br><%=t.productionorunit2%>
+				<% end %>
+			</td>
+			<td colspan="3" class="cell_content"><%=t.mediafrom%>
+				<% if t.mediafrom2 != "0" %>
+				</br><%=t.mediafrom2%>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>
 <% end %>
+
