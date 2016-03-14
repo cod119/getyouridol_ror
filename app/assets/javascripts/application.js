@@ -67,6 +67,7 @@ $(document).ready(function() {
 		//$notHidden.first().attr('selected','selected').end().last().removeattr('selected');
 		
 	}).trigger('change');
+	
 	$('#search_form').on('change', '.select_max', function(e){
 		e.stopPropagation;
 		var $last = +$(this).val();
@@ -89,4 +90,13 @@ $(document).ready(function() {
 		//$notHidden.last().attr('selected','selected').end().first().removeattr('selected');
 		
 	}).trigger('change');
+	
+	$('.card_picture').on('click', function(e) {
+		$(this).hide();
+		$(this).closest('.box').children('.table').fadeToggle();
+	});
+	$('.table').on('click', function(e) {
+		$(this).hide();
+		$(this).closest('.box').children('.card_picture').fadeToggle();
+	});
 });

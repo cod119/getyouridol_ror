@@ -24,8 +24,9 @@
 	<% end %>
 </fieldset>
 -->
-
-<table border="1" cellspacing="1" cellpadding="5">
+<div class="box">
+<%=image_tag('Hibiki Ganaha.jpg', class: 'card_picture')%>
+<table border="1" cellspacing="0" cellpadding="5" class="table" style="display: none">
 	<thead>
 		<th colspan="6"><%=t.nameko%></th>
 	</thead>
@@ -33,7 +34,7 @@
 		<tr>
 			<td rowspan="2" scope="row" class="cell_title cell_title_right">이름</td>
 			<td colspan="3" class="cell_content"><%=t.nameen%></td>
-			<td rowspan="4" colspan="2">사진</td>
+			<td rowspan="4" colspan="2" class="cell_picture"><%=image_tag('Hibiki Ganaha1.jpg', class: 'small_picture')%></td>
 		</tr>
 		<tr>
 			<td colspan="3" class="cell_content"><%=t.nameja%></td>
@@ -94,5 +95,6 @@
 		</tr>
 	</tbody>
 </table>
+</div>
 <% end %>
 
