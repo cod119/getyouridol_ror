@@ -1,20 +1,126 @@
 <fieldset>
 	<legend>검색조건</legend>
 	
-	<%= form_tag({controller: :list, action: :result}) do%>
+	<%= form_tag({controller: :list, action: :result},{id: 'search_form'}) do%>
 		성별:
 		<%=radio_button_tag('gender', 'F')%>여성
 		<%=radio_button_tag('gender', 'M')%>남성
 		<%=radio_button_tag('gender', "", checked = true)%>성별무관</br>
+		<div class='select_field'>
 		나이:
-		<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'input_id', include_blank: '모든 값'}%></br>
+		<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'form_age', include_blank: '모든 값'}%>
+		</div>
+		<div class='select_field'>
 		신장:
-		<%=select_tag 'heightMin', options_for_select(@heightMinRangeArray, @heightMinRangeArrayValue.first.to_i)%>cm 이상
-		<%=select_tag 'heightMax', options_for_select(@heightMaxRangeArray, @heightMaxRangeArrayValue.last.to_i)%>cm 미만</br>
-		
+		<%=select_tag 'heightMin', options_for_select(@heightMinRangeArray, @heightMinRangeArray.values.first.to_i), {id: 'form_heightMin', class: 'select_min'}%>cm 이상
+		<%=select_tag 'heightMax', options_for_select(@heightMaxRangeArray, @heightMaxRangeArray.values.last.to_i), {id: 'form_heightMax', class: 'select_max'}%>cm 미만
+		</div>
+		<div class='select_field'>
+		체중:
+		<%=select_tag 'weightMin', options_for_select(@weightMinRangeArray, @weightMinRangeArray.values.first.to_i), {id: 'form_weightMin', class: 'select_min'}%>kg 이상
+		<%=select_tag 'weightMax', options_for_select(@weightMaxRangeArray, @weightMaxRangeArray.values.last.to_i), {id: 'form_weightMax', class: 'select_max'}%>kg 미만
+		</div>
+		<div class='select_field'>
+		사이즈(B/W/H):
+		<span class='select_field'>
+		<%=select_tag 'bMin', options_for_select(@bMinRangeArray, @bMinRangeArray.values.first.to_i), {id: 'form_bMin', class: 'select_min'}%>cm 이상
+		<%=select_tag 'bMax', options_for_select(@bMaxRangeArray, @bMaxRangeArray.values.last.to_i), {id: 'form_bMax', class: 'select_max'}%>cm 미만
+		</span>
+		//
+		<span class='select_field'>
+		<%=select_tag 'wMin', options_for_select(@wMinRangeArray, @wMinRangeArray.values.first.to_i), {id: 'form_wMin', class: 'select_min'}%>cm 이상
+		<%=select_tag 'wMax', options_for_select(@wMaxRangeArray, @wMaxRangeArray.values.last.to_i), {id: 'form_wMax', class: 'select_max'}%>cm 미만
+		</span>
+		//
+		<span class='select_field'>
+		<%=select_tag 'hMin', options_for_select(@hMinRangeArray, @hMinRangeArray.values.first.to_i), {id: 'form_hMin', class: 'select_min'}%>cm 이상
+		<%=select_tag 'hMax', options_for_select(@hMaxRangeArray, @hMaxRangeArray.values.last.to_i), {id: 'form_hMax', class: 'select_max'}%>cm 미만
+		</span>
+		</div>
+		<div class='select_field'>
 		소속:
 		<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {include_blank: '모든 값'}%></br>
+		</div>
 		
 		<%=submit_tag '검색'%>
 	<%end%>
 </fieldset>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	function once(func) {
+    // TIP: These variables are stored in a "closure scope" (worth researching),
+    // so that they'll remain available to the newly-generated function every
+    // time it's called.
+    	var alreadyCalled = false;
+    	var result;
+
+    // TIP: We'll return a new function that delegates to the old one, but only
+    // if it hasn't been called before.
+    	return function() {
+     	 if (!alreadyCalled) {
+        // TIP: .apply(this, arguments) is the standard way to pass on all of the
+        // infromation from one function call to another.
+      	  result = func.apply(this, arguments);
+      	  alreadyCalled = true;
+      	}
+      // The new function always returns the originally computed result.
+     	 return result;
+    	};
+  	};
+  	
+    	
+  	
+	$('#search_form').on('change', '.select_min', function(e){
+		e.stopPropagation;
+		var $first = +$(this).val();
+		console.log($first);
+		console.log($(this).closest('.select_field').find('.select_max option'))
+		$(this).closest('.select_field').find('.select_max option').each(function() {
+			$(this).show();
+			if(+$(this).val() <= $first) {
+				$(this).hide();
+			}
+		});
+		console.log($(this).closest('.select_field').find('.select_max').val());
+		if(+$(this).val() >= +$(this).closest('.select_field').find('.select_max').val()) {
+			console.log($(this).closest('.select_field').find('.select_max option').removeAttr('selected').filter(':visible').first())
+			$(this).closest('.select_field').find('.select_max option').removeAttr('selected').filter(':visible').first().attr('selected', 'selected')
+		}
+		 
+		//var $notHidden = $('#form_heightMax option').filter(function() {
+		//	if ($(this).attr('style')!=="display: none;") {
+		//		return true;
+		//	} else {
+		//		return false;
+		//	} 
+		//});
+		//$notHidden.first().attr('selected','selected').end().last().removeattr('selected');
+		
+	}).trigger('change');
+	$('#search_form').on('change', '.select_max', function(e){
+		e.stopPropagation;
+		var $last = +$(this).val();
+		console.log($last);
+		//max값 선택 여부에 따라 min 값의 range가 변화하는 기믹(하단) 없앰
+		//$(this).closest('.select_field').find('.select_min option').each(function() {
+		//	$(this).show();
+		//	if(+$(this).val() >= $last) {
+		//		$(this).hide();
+		//	}
+		//});
+		
+		//var $notHidden = $('#form_heightMin option').filter(function() {
+		//	if ($(this).attr('style')!=="display: none;") {
+		//		return true;
+		//	} else {
+		//		return false;
+		//	} 
+		//});
+		//$notHidden.last().attr('selected','selected').end().first().removeattr('selected');
+		
+	}).trigger('change');
+});
+</script>
+

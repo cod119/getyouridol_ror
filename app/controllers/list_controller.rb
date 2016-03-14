@@ -5,23 +5,24 @@ class ListController < ApplicationController
   
   def search
      @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
-     @idol = Idol.new
      @idols = Idol.all.order(nameko: :asc)
      
      #신장
-     @heightRangeArrayRaw = Idol.select(:height).distinct.pluck(:height).flatten
-     @heightMinRaw = (@heightRangeArrayRaw.min / 5).floor
-     @heightMaxRaw = (@heightRangeArrayRaw.max / 5).floor
-     @heightMinRangeArray = {}
-     for val in (@heightMinRaw..@heightMaxRaw)
-       @heightMinRangeArray[val*5] = val*5
-     end
-     @heightMinRangeArrayValue = @heightMinRangeArray.values
-     @heightMaxRangeArray = {}
-     for val in (@heightMinRaw+1..@heightMaxRaw+1)
-       @heightMaxRangeArray[val*5] = val*5
-     end
-     @heightMaxRangeArrayValue = @heightMaxRangeArray.values
+     @heightMinRangeArray = rangeArray('height', 5, 0)
+     @heightMaxRangeArray = rangeArray('height', 5, 1)
+     #체중
+     @weightMinRangeArray = rangeArray('weight', 5, 0)
+     @weightMaxRangeArray = rangeArray('weight', 5, 1)
+     #b
+     @bMinRangeArray = rangeArray('b', 5, 0)
+     @bMaxRangeArray = rangeArray('b', 5, 1)
+     #w
+     @wMinRangeArray = rangeArray('w', 5, 0)
+     @wMaxRangeArray = rangeArray('w', 5, 1)
+     #h
+     @hMinRangeArray = rangeArray('h', 5, 0)
+     @hMaxRangeArray = rangeArray('h', 5, 1)
+     
   end
   
   def result
@@ -45,7 +46,19 @@ class ListController < ApplicationController
     end
     
     #신장
-    @idols = @idols.where('height >= ? AND height <= ?', params[:heightMin], params[:heightMax])
+    @idols = @idols.where('height >= ? AND height < ?', params[:heightMin], params[:heightMax])
+    
+    #체중
+    @idols = @idols.where('weight >= ? AND weight < ?', params[:weightMin], params[:weightMax])
+    
+    #b
+    @idols = @idols.where('b >= ? AND b < ?', params[:bMin], params[:bMax])
+    
+    #w
+    @idols = @idols.where('w >= ? AND w < ?', params[:wMin], params[:wMax])
+    
+    #h
+    @idols = @idols.where('h >= ? AND h < ?', params[:hMin], params[:hMax])
     
     #소속사
     if params[:productionorunit] != ""
