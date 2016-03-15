@@ -81,10 +81,10 @@ a {
      text-decoration: none;
 }
 
-#container {
-	text-align: center;
-	padding: 0 auto;
-}
+
+/*result.html*/
+
+	/*.result-wrapper에 대한 설정은 .home-wrapper에 함께 되어 있음*/
 .table {
 	margin: auto;
 	width: 100%;
@@ -121,7 +121,7 @@ a {
 	background-size:cover;
     background-repeat:no-repeat;
 	*/
-	width: 80%;
+	width: 100%;
 }
 .card_picture {
 	width: 100%;
@@ -136,21 +136,30 @@ a {
 	box-shadow: 0px 2px 2px gray;
 	overflow: hidden;
 }
+
 .navbar-wrapper .nav-item, .navbar-wrapper .nav-title {
 	float: left;
 	color: white;
 	text-decoration: none;
-	padding: 0.6rem 0.6rem;
-	display: block;
+	list-style: none;
+	padding: 0.6rem 0.3rem;
+	font-size: 1rem;
+}
+	/*nav상의 바로가기 버튼이 전체로서는 우측으로 float되도록*/
+.navbar-wrapper .nav-list {
+	float: right;
+}
+
+.navbar-wrapper .nav-title {
+	font-size: 1.2rem;
+	font-style: italic;
+	font-weight: bold;
 }
 	/*li테그중 sepator 클래스의 padding을 0으로 만들어주기 위한것. 항상 바로 위의 코드 아래에 위치해야 함. 주의할것*/
 .navbar-wrapper .nav-item.separator {
 	padding: 0.6em 0;
 }
-	/*nav상의 바로가기 버튼이 전체로서는 우측으로 float되도록*/
-.navbar-wrapper .navlist {
-	float: right;
-}
+
 .navbar-wrapper:hover .nav-item:hover {
 	background-color: #FFA9A9;
 	color: black;
@@ -164,7 +173,7 @@ a {
 }
 
 /*home.html*/
-.home-wrapper {
+.home-wrapper, .result-wrapper {
 	text-align: center;
 	overflow: hidden;
 	padding: 2rem;
@@ -192,4 +201,69 @@ a {
 .home-wrapper .search-btn:hover {
 	background-color: #CC3D3D;
 	color: white;
+}
+
+
+
+
+/******************/
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	.box {
+		width: 700px;
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.box {
+		width: 700px;
+	}
+}
+	
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) and { ... }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }
+
+
+/********************/
+
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+	html {
+		font-size: 3rem;
+	}
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  /* some CSS here */
+ 	html {
+		font-size: 1.5rem;
+	}
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+  /* some CSS here */
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+  /* some CSS here */
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  /* some CSS here */
 }

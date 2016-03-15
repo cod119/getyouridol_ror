@@ -26,7 +26,8 @@
 -->
 <div class="box">
 <%=image_tag('Hibiki Ganaha.jpg', class: 'card_picture')%>
-<table border="1" cellspacing="0" cellpadding="5" class="table table_click" style="display: none">
+<!--
+<table border="1" cellspacing="0" cellpadding="0" class="table table_click" style="display: none">
 	<thead>
 		<th colspan="6"><%=t.nameko%></th>
 	</thead>
@@ -92,6 +93,72 @@
 				</br><%=t.mediafrom2%>
 				<% end %>
 			</td>
+		</tr>
+	</tbody>
+</table>
+-->
+<%=image_tag('Hibiki Ganaha1.jpg', class: 'small_picture')%>
+<table border="1" cellspacing="0" cellpadding="0" class="table table_click" style="display: none">
+	<thead>
+		<th colspan="2">▶PROFILE</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
+			<td colspan="1" class="cell_content"><%=t.nameko%></td>
+			
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content"><%=t.nameja%></td>
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content"><%=t.nameen%></td>
+		</tr>
+		<tr>
+			<td scope="row" class="cell_title cell_title_right">CV</td>	
+			<td colspan="1" class="cell_content"><%=t.cv%></td>
+		</tr>
+		<tr>
+			<td scope="row" class="cell_title cell_title_right">생일</td>	
+			<td colspan="1" class="cell_content"><%=t.birth%> (<%=t.age%>세)</td>
+		</tr>
+	</tbody>
+</table>
+<table border="1" cellspacing="0" cellpadding="0" class="table table_click" style="display: none">
+	<tbody>
+		<tr>
+			<td colspan="1" class="cell_content">신장</td>
+			<td colspan="1" class="cell_content"><%=t.height%>cm</td>
+			<td colspan="1" class="cell_content">체중</td>
+			<td colspan="1" class="cell_content"><%=t.weight%>kg</td>
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content">사이즈</td>
+			<td colspan="3" class="cell_content">B <%=t.b%>cm / W <%=t.w%>cm / H <%=t.h%>cm</td>
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content">출신지</td>
+			<td colspan="1" class="cell_content"><%=t.areafrom%></td>
+			<td colspan="1" class="cell_content">혈액형</td>
+			<td colspan="1" class="cell_content"><%=t.bloodtype%></td>
+		</tr>
+		<tr>
+			<td scope="row" rowspan="2" class="cell_title cell_title_right">출신</td>	
+			<td colspan="3"rowspan="2" class="cell_content"><%=t.areafrom%></td>
+			<td scope="col" class="cell_title cell_title_up">성별</td>
+			<td scope="col" class="cell_title cell_title_up">혈액형</td>			
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content">취미</td>
+			<td colspan="3" class="cell_content"><%=t.hobby%></td>
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content">소속</td>
+			<td colspan="3" class="cell_content"><%=t.productionorunit%></td>
+		</tr>
+		<tr>
+			<td colspan="1" class="cell_content">출신매체</td>
+			<td colspan="3" class="cell_content"><%=t.mediafrom%></td>
 		</tr>
 	</tbody>
 </table>
