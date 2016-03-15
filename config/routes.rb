@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'list#search'
+  get '/home' => 'list#home'
   get '/search' => 'list#search'
-  post '/list/result' => 'list#result'
+  post '/result' => 'list#result'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,6 +1,7 @@
 class ListController < ApplicationController
-  def index
-     @idols = Idol.all
+  
+  def home
+    
   end
   
   def search
@@ -65,7 +66,6 @@ class ListController < ApplicationController
       #@idols = Idol.where(productionorunit: params[:productionorunit])
       @idols = @idols.where('productionorunit = ? OR productionorunit2 = ?', params[:productionorunit], params[:productionorunit])
     end
-    render action: 'index'
   end
 end
 

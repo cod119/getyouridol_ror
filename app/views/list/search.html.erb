@@ -55,7 +55,8 @@
 
 <h1><strong>당신의 아이돌을 검색하시오</strong></h1>
 
-<%= form_tag({controller: :list, action: :result},{id: 'search_form'}) do%>
+<%= form_tag({action: :result},{id: 'search_form'}) do%>
+	<div class="box">
 	<table border="1" cellspacing="0" cellpadding="5" class="table">
 		<thead>
 			<th colspan="6">OOO</th>
@@ -154,7 +155,7 @@
 			</tr>
 		</tbody>
 	</table>
-	
+	</div>
 	<%=submit_tag '검색'%>
 <% end %>
 

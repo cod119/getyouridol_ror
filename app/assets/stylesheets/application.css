@@ -64,6 +64,22 @@ table {
 }
 
 /*belows are my code*/
+/*
+@font-face {
+  font-family: 'Jeju Hallasan';
+  src: url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css) format("truetype");
+}
+*/
+html {
+/*font-family: 'Jeju Hallasan', serif;*/
+font-size: 1rem;
+line-height: 1.5rem;
+}
+
+a {
+     background-color: transparent;
+     text-decoration: none;
+}
 
 #container {
 	text-align: center;
@@ -72,6 +88,8 @@ table {
 .table {
 	margin: auto;
 	width: 100%;
+	height: width*30%;
+	/*border-collapse: collapse;*/
 	border: 1px solid grey;
 }
 .table, .cell_title, .cell_content {
@@ -96,7 +114,8 @@ table {
 	font-weight: bold;
 }
 .box {
-	display: inline-block;
+	display: block;
+	margin: auto auto;
 	/*
 	background-image: url('/assets/Hibiki Ganaha.jpg');
 	background-size:cover;
@@ -106,4 +125,66 @@ table {
 }
 .card_picture {
 	width: 100%;
+}
+
+/*index.html*/
+
+.navbar-wrapper {
+	width: 100%;
+	background-color: #CC3D3D;
+	vertical-align: middle;
+	box-shadow: 0px 2px 2px gray;
+	overflow: hidden;
+}
+.navbar-wrapper .nav-item, .navbar-wrapper .nav-title {
+	float: left;
+	color: white;
+	text-decoration: none;
+	padding: 0.6rem 0.6rem;
+	display: block;
+}
+	/*li테그중 sepator 클래스의 padding을 0으로 만들어주기 위한것. 항상 바로 위의 코드 아래에 위치해야 함. 주의할것*/
+.navbar-wrapper .nav-item.separator {
+	padding: 0.6em 0;
+}
+	/*nav상의 바로가기 버튼이 전체로서는 우측으로 float되도록*/
+.navbar-wrapper .navlist {
+	float: right;
+}
+.navbar-wrapper:hover .nav-item:hover {
+	background-color: #FFA9A9;
+	color: black;
+}
+	/*아래 두 태그는 nav상의 바로가기 버튼중 링크가 있는 것이 a태그의 특성으로 색상이 바뀌는 것을 방지*/
+.navbar-wrapper .linktext:link {
+	color: white;
+}
+.navbar-wrapper .linktext:visited {
+	color: white;
+}
+
+/*home.html*/
+.home-wrapper {
+	text-align: center;
+	overflow: hidden;
+	padding: 2rem;
+	line-height: 1.5em;
+}
+.home-wrapper .hello .h1 {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+.home-wrapper .hello .h3 {
+	font-size: 0.8rem;
+}
+.home-wrapper .search-btn {
+	font-size: 1.5rem;
+	height: 2.5rem;
+	width: 5rem;
+	border-radius: 0.3rem;
+	background-color: 
+}
+.home-wrapper .search-btn {
+	
 }
