@@ -82,6 +82,12 @@ a {
      background-color: transparent;
      text-decoration: none;
 }
+bold {
+	font-weight: bold;
+}
+italic {
+	font-style: italic;
+}
 
 
 /*result.html*/
@@ -99,17 +105,27 @@ a {
 	background-color: white;
 }
 .cell_title {
-	width: 20%;
+	width: 18%;
 	background-color: #FFF1F1; 
 }
 	/*가운데 있는 값-cell의 폭을 조절*/
 .cell_content_middle {
-	width: 40%;
+	width: 45%;
 
 }
-#table-up {
-	border-bottom: none;
+	/*가로모드와 데스크탑 모드를 위한 .wide_table의 .cell_title 폭 조절*/
+.wide_table .cell_title {
+	width: 12%;
 }
+	/*가로모드와 데스크탑 모드를 위한 .wide_table의, 1행에 두개 이상의 값을 가진 행의 .cell_content_middle 폭 조절*/
+	/*가운데 있는 값-cell의 폭을 조절. 이게 다 출신지'브라질 리우데자네이루'때문임*/
+.wide_table .cell_content_middle1 {
+	width: 30%;
+}
+.wide_table .cell_content_middle2 {
+	width: 10%;
+}
+
 /* 삭제할 것.임시
 .small_picture {
 	width: 100%;
@@ -117,24 +133,37 @@ a {
 }
 아래  .small_picture도 삭제할 것
 */
-	/*작은 사진을 수직중앙에 위치시키기 위하여 .small_picture, .small_picture_cell을 설정*/
+/* 삭제할것
+	작은 사진을 수직중앙에 위치시키기 위하여 .small_picture, .small_picture_cell을 설정
 .small_picture, .small_picture_cell {
 	vertical-align: middle;
 }
-.small_picture_cell {
-	width: 40%;
+*/
+	/*그림이 배경화면으로 있는 cell에서, 배경 그림의 중앙을 출력하기 위한 코드(.picture_cell)*/
+	/*small_picture_cell의 크기는, 내용이 없어서 조정 불가했으며,
+	대신 전체 태이블의 크기를 100%으로 잡은 후, 그 안의 인접 cell(title과 content, 특히 middle_cotent의
+	가로 길이를 조정함으로써 (100-가로 길이(%))만큼의 비율이 small_picture_cell의 가로 길이가 되고,
+	높이는 각 cell의 높이의 합으로 정해짐.*/
+	/*중요한 점은, 인접 cell이 없는 단독상태의 '배경만있고 내용이 없는 cell은 화면에 출력되지 않음. 뻥 뚤리거나 안나옴*/
+.picture_cell {
 	background-position: center center;
 	background-size: cover;
 	background-repeat: none;
 }
+/* 삭제할 것.
+.small_picture_cell {
+	width: 40%;
+}
+*/
 .cell_content {
 	font-weight: bold;
 }
-.cell_content>.unit {
+.cell_content .unit {
 	font-weight: normal;
 	font-size: 0.7rem;
 }
-.name {
+/*자간을 줄이기 위한 클레스*/
+.word_narrow {
 	letter-spacing: -0.05rem;
 }
 .cell_head {
@@ -145,16 +174,35 @@ a {
 	padding: 0 0.5rem;
 }
 .box-outter {
-	margin: 0.5rem;
 	display: block;
 	margin: auto auto;
-	width: 100%;
+	width: 90%;
 	vertical-align: middle;
 }
 .card_picture {
 	width: 100%;
 	vertical-align: middle;
 }
+/*card_picture_table의 head요소가 같은 sibling인 이미지 상단에 위치하도록
+absolute속성을 줌. table에는 relative, table_head는 ablolute.
+head는 inline 요소이므로, 그 내부의 span이 수직 가운데 정렬하기 위해서는
+span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vertical-align:middle; 설정*/
+.card_picture_table {
+	position: relative;
+}
+.card_picture_table_head {
+	position: absolute;
+	width: 100%;
+	height: 1.7rem;
+	padding: 0;
+}
+.card_picture_table_head_string {
+	font-size: 1rem;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 0.5rem;
+}
+/**/
 
 
 /*index.html*/
@@ -206,7 +254,7 @@ a {
 .home-wrapper, .result-wrapper {
 	text-align: center;
 	overflow: hidden;
-	padding: 2rem;
+	padding: 1.7rem 3rem;
 	line-height: 1.5em;
 }
 .home-wrapper .hello .h1 {
@@ -222,7 +270,6 @@ a {
 	height: 2.5rem;
 	width: 5rem;
 	border-radius: 0.3rem;
-	background-color: 
 }
 .home-wrapper .search-btn {
 	margin: 1.6rem;
@@ -234,7 +281,8 @@ a {
 }
 
 /*아래의 태그는 반응형 페이지를 위한 태그. 높은 해상도용 태이블을 평상시에 감추는 역할.*/
-.wide_table, .wide_small_picture {
+/*html에서 diplay:none을 설정하면, 우선순위에 따라 css에서 조정한 내용은 후순위로 밀리게 되어 작동안함. 주의*/
+.wide_table {
 	display: none;
 }
 
@@ -265,8 +313,14 @@ a {
 @media screen and (max-device-width: 480px) and (orientation: portrait){
   /* some CSS here */
 	html {
-		font-size: 2.5rem;
-	}	
+		font-size: 2.3rem;
+	}
+	.result-wrapper {
+		padding: 1.7rem;
+	}
+	.box-outter {
+		width: 100%;
+	}
 	
 }
 
@@ -274,15 +328,24 @@ a {
 @media screen and (max-device-width: 640px) and (orientation: landscape){
   /* some CSS here */
  	html {
-		font-size: 2.5rem;
+		font-size: 1.3rem;
 	}
+	 
+ 	.narrow_table {
+ 		display: none;
+ 	}
+ 	.wide_table {
+ 		display: block;
+ 	}
+	
+	
+
 }
 
 /* #### Mobile Phones Portrait or Landscape #### */
 @media screen and (max-device-width: 640px){
   /* some CSS here */
 	html {
-		font-size: 2.5rem;
 	}
 }
 
@@ -290,7 +353,7 @@ a {
 @media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
   /* some CSS here */
  	html {
-		font-size: 2.5rem;
+		font-size: 2.3rem;
 	}	
  
 }
@@ -299,18 +362,32 @@ a {
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
   /* some CSS here */
 	html {
-		font-size: 2.5rem;
+		font-size: 1.3rem;
 	}
+ 
+ 	.narrow_table {
+ 		display: none;
+ 	}
+ 	.wide_table {
+ 		display: block;
+ 	}
+	
 }
 
 /* #### Desktops #### */
 @media screen and (min-width: 1024px){
   /* some CSS here */
- html {
-		font-size: 1rem;
+ 	html {
+		font-size: 1.3rem;
 	}
  
- 
+ 	.narrow_table {
+ 		display: none;
+ 	}
+ 	.wide_table {
+ 		display: block;
+ 	}
+ 	/*
 	.narrow_table {
 		display: none;
 	}
@@ -332,5 +409,5 @@ a {
   		content: '';
   		clear: both;
 	}
-	
+	*/
 }

@@ -75,12 +75,12 @@ $(document).ready(function() {
 		
 	}).trigger('change');
 	
-	$('.card_picture').on('click', function(e) {
+	$('.box-card').on('click', function(e) {
 		$(this).hide();
-		$(this).closest('.box-outter').children('.box-inner').fadeToggle();
+		$(this).closest('.box-outter').children('.box-inner').fadeToggle('fast');
 	});
 	$('.box-inner').on('click', function(e) {
-		$(this).closest('.box-inner').hide();
-		$(this).closest('.box-outter').children('.card_picture').fadeToggle();
+		$(this).closest('.box-inner').hide('fast');
+		$(this).closest('.box-outter').children('.box-card').fadeToggle('fast');
 	});
 });
