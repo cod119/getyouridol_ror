@@ -51,182 +51,127 @@
 </fieldset>
 
 -->
+<div class="box-outter">
+<div class="search-wrapper">
+	
+	<h1><strong>당신의 아이돌을 검색하시오</strong></h1>
 
-
-<h1><strong>당신의 아이돌을 검색하시오</strong></h1>
-
-<%= form_tag({action: :result},{id: 'search_form'}) do%>
-	<div class="box">
-	<table border="1" cellspacing="0" cellpadding="5" class="table">
-		<thead>
-			<th colspan="6">OOO</th>
-		</thead>
-		<tbody>
-			<tr>
-				<td rowspan="2" scope="row" class="cell_title cell_title_right">이름</td>
-				<td colspan="3" class="cell_content">OOO</td>
-				<td rowspan="4" colspan="2" class="cell_picture">?</td>
-			</tr>
-			<tr>
-				<td colspan="3" class="cell_content">OOO</td>
-			</tr>
-			<tr>
-				<td scope="row" class="cell_title cell_title_right">CV</td>	
-				<td colspan="3" class="cell_content">OOO</td>
-			</tr>
-			<tr>
-				<td scope="row" class="cell_title cell_title_right">생일</td>	
-				<td colspan="3" class="cell_content">OOO</td>
-			</tr>
-			<tr>
-				<td scope="row" rowspan="2" class="cell_title cell_title_right">출신</td>	
-				<td colspan="3"rowspan="2" class="cell_content">OOO</td>
-				<td scope="col" class="cell_title cell_title_up">성별</td>
-				<td scope="col" class="cell_title cell_title_up">혈액형</td>			
-			</tr>
-			<tr>
-				<td class="cell_content">
-					<div class='select_field'>
-						<%=select_tag 'gender', options_for_select({'여성'=>'F','남성'=>'M'}), {id: 'form_gender', class: 'select_box', include_blank: '전체'}%>	
-					</div>
-				</td>
-				<td class="cell_content">? 형</td>		
-			</tr>
-			<tr>
-				<td scope="col" class="cell_title cell_title_up">연령</td>
-				<td scope="col" class="cell_title cell_title_up">신장</td>
-				<td scope="col" class="cell_title cell_title_up">체중</td>
-				<td scope="col" class="cell_title cell_title_up">B</td>
-				<td scope="col" class="cell_title cell_title_up">W</td>
-				<td scope="col" class="cell_title cell_title_up">H</td>
-			</tr>
-			<tr>
-				<td class="cell_content">
-					<div class='select_field'>
-						<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'form_age', include_blank: '전체'}%>
-					</div>
-				</td>
-				<td class="cell_content">
-					<div class='select_field'>
-						<%=select_tag 'heightMin', options_for_select(@heightMinRangeArray, @heightMinRangeArray.values.first.to_i), {id: 'form_heightMin', class: 'select_min select_box'}%>cm 이상
-						</br><%=select_tag 'heightMax', options_for_select(@heightMaxRangeArray, @heightMaxRangeArray.values.last.to_i), {id: 'form_heightMax', class: 'select_max select_box'}%>cm 미만
-					</div>
-				</td>
-				<td class="cell_content">
-					<div class='select_field'>
-						<%=select_tag 'weightMin', options_for_select(@weightMinRangeArray, @weightMinRangeArray.values.first.to_i), {id: 'form_weightMin', class: 'select_min select_box'}%>kg 이상
-						</br><%=select_tag 'weightMax', options_for_select(@weightMaxRangeArray, @weightMaxRangeArray.values.last.to_i), {id: 'form_weightMax', class: 'select_max select_box'}%>kg 미만
-					</div>
-				</td>
-				<td class="cell_content">
-					<span class='select_field'>
-						<%=select_tag 'bMin', options_for_select(@bMinRangeArray, @bMinRangeArray.values.first.to_i), {id: 'form_bMin', class: 'select_min select_box'}%>cm 이상
-						</br><%=select_tag 'bMax', options_for_select(@bMaxRangeArray, @bMaxRangeArray.values.last.to_i), {id: 'form_bMax', class: 'select_max select_box'}%>cm 미만
-					</span>
-				</td>
-				<td class="cell_content">
-					<span class='select_field'>
-						<%=select_tag 'wMin', options_for_select(@wMinRangeArray, @wMinRangeArray.values.first.to_i), {id: 'form_wMin', class: 'select_min select_box'}%>cm 이상
-						</br><%=select_tag 'wMax', options_for_select(@wMaxRangeArray, @wMaxRangeArray.values.last.to_i), {id: 'form_wMax', class: 'select_max select_box'}%>cm 미만
-					</span>
-				</td>
-				<td class="cell_content">
-					<span class='select_field'>
-						<%=select_tag 'hMin', options_for_select(@hMinRangeArray, @hMinRangeArray.values.first.to_i), {id: 'form_hMin', class: 'select_min select_box'}%>cm 이상
-						</br><%=select_tag 'hMax', options_for_select(@hMaxRangeArray, @hMaxRangeArray.values.last.to_i), {id: 'form_hMax', class: 'select_max select_box'}%>cm 미만
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td scope="row" class="cell_title cell_title_right">취미</td>
-				<td colspan="5" class="cell_content">OOOOOOOO</td>
-			</tr>
-			<tr>
-				<td scope="col" colspan="3" class="cell_title cell_title_up">소속</td>
-				<td scope="col" colspan="3" class="cell_title cell_title_up">출신매체</td>
-			</tr>		
-			<tr>
-				<td colspan="3" class="cell_content">
-					<div class='select_field'>
-						<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box', include_blank: '모든 값'}%>
-					</div>
-				</td>
-				<td colspan="3" class="cell_content">OOOO</td>
-			</tr>
-		</tbody>
-	</table>
-	</div>
+	<%= form_tag({controller: :list, action: :result},{id: 'search_form', class: 'search_table'}) do%>
+		<table border="1" cellspacing="0" cellpadding="0" class="table table_click">
+			<thead>
+				<th colspan="4" class="cell_head kurenai-down">》PROFILE</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">성별</td>
+					<td colspan="2" class="cell_content">
+						<div class='select_field'>
+							<%=select_tag 'gender', options_for_select({'여성'=>'F','남성'=>'M'}), {id: 'form_gender', class: 'select_box select_box_full_length', include_blank: '전체'}%>	
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">연령</td>
+					<td colspan="2" class="cell_content">
+						<div class='select_field'>
+							<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'form_age', class: 'select_box select_box_full_length', include_blank: '전체'}%>
+						</div>
+					</td>
+				</tr>
+				<tr class='select_field'>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">신장</td>
+					
+					<td colspan="1" class="cell_content cell_content_half">
+						
+						<%=select_tag 'heightMin', options_for_select(@heightMinRangeArray, @heightMinRangeArray.values.first.to_i), {id: 'form_heightMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">cm 이상</span>
+						
+					</td>
+					<td colspan="1" class="cell_content cell_content_half">
+					
+						<%=select_tag 'heightMax', options_for_select(@heightMaxRangeArray, @heightMaxRangeArray.values.last.to_i), {id: 'form_heightMax', class: 'select_max select_box select_box_half_length'}%>
+							<span class="unit">cm 미만</span>
+						
+					</td>
+					
+				</tr>
+				<tr class='select_field'>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">체중</td>	
+					<td class="cell_content cell_content_half">
+						<%=select_tag 'weightMin', options_for_select(@weightMinRangeArray, @weightMinRangeArray.values.first.to_i), {id: 'form_weightMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">kg 이상</span>
+					</td>
+					<td colspan="1" class="cell_content cell_content_half">
+						<%=select_tag 'weightMax', options_for_select(@weightMaxRangeArray, @weightMaxRangeArray.values.last.to_i), {id: 'form_weightMax', class: 'select_max select_box select_box_half_length'}%>
+							<span class="unit">kg 미만</span>
+					
+					</td>
+				<tr class='select_field'>
+					<td colspan="1" rowspan="3" scope="row" class="cell_title">사이즈</td>
+					<td colspan="1" scope="row" class="cell_title cell_title_half">B</td>
+					<td class="cell_content cell_content_half">
+					
+						<%=select_tag 'bMin', options_for_select(@bMinRangeArray, @bMinRangeArray.values.first.to_i), {id: 'form_bMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">cm 이상</span>
+					
+					</td>
+					<td colspan="1" class="cell_content cell_content_half">
+						
+						<%=select_tag 'bMax', options_for_select(@bMaxRangeArray, @bMaxRangeArray.values.last.to_i), {id: 'form_bMax', class: 'select_max select_box select_box_half_length'}%>
+							<span class="unit">cm 미만</span>
+					
+					</td>
+				</tr>
+				<tr class='select_field'>
+					<td colspan="1" scope="row" class="cell_title cell_title_half">W</td>
+					<td class="cell_content cell_content_half">
+						
+						<%=select_tag 'wMin', options_for_select(@wMinRangeArray, @wMinRangeArray.values.first.to_i), {id: 'form_wMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">cm 이상</span>
+					
+					</td>
+					<td colspan="1" class="cell_content cell_content_half">
+			
+						<%=select_tag 'wMax', options_for_select(@wMaxRangeArray, @wMaxRangeArray.values.last.to_i), {id: 'form_wMax', class: 'select_max select_box select_box_half_length'}%>
+							<span class="unit">cm 미만</span>
+					
+					</td>
+				</tr>
+				<tr class='select_field'>
+					<td colspan="1" scope="row" class="cell_title cell_title_half">H</td>
+					<td class="cell_content cell_content_half">
+					
+						<%=select_tag 'hMin', options_for_select(@hMinRangeArray, @hMinRangeArray.values.first.to_i), {id: 'form_hMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">cm 이상</span>
+					
+					</td>
+					<td colspan="1" class="cell_content cell_content_half">
+						
+						<%=select_tag 'hMax', options_for_select(@hMaxRangeArray, @hMaxRangeArray.values.last.to_i), {id: 'form_hMax', class: 'select_max select_box select_box_half_length'}%>
+								<span class="unit">cm 미만</span>
+					
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">연령</td>
+					<td colspan="2" class="cell_content">
+						<div class='select_field'>
+							<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box select_box_full_length', include_blank: '모든 값'}%>
+						</div>
+					</td>
+				</tr>
+			
+			</tbody>
+		</table>
+	
 	<%=submit_tag '검색'%>
-<% end %>
+	
+	<%end%>	
+	
+	
 
 
+</div>
 
 
-
-
-
-
-
-
-<!--
-<table border="1" cellspacing="1" cellpadding="5">
-	<tbody>
-		<tr>
-			<td rowspan="2" scope="row">이름</td>
-			<td colspan="3">김철수</td>
-			<td rowspan="4" colspan="2">사진</td>
-		</tr>
-		<tr>
-			<td colspan="3">Kim Chulsoo</td>
-		</tr>
-		<tr>
-			<td scope="row">CV</td>	
-			<td colspan="3">김수철</td>
-		</tr>
-		<tr>
-			<td scope="row">생일</td>	
-			<td colspan="3">1 월 2 일</td>
-		</tr>
-		<tr>
-			<td scope="row" rowspan="2">출신</td>	
-			<td colspan="3"rowspan="2">서울</td>
-			<td scope="col">성별</td>
-			<td scope="col">혈액형</td>			
-		</tr>
-		<tr>
-			<td>남</td>
-			<td>A형</td>		
-		</tr>
-		<tr>
-			<td scope="col">연령</td>
-			<td scope="col">신장</td>
-			<td scope="col">체중</td>
-			<td scope="col">B</td>
-			<td scope="col">W</td>
-			<td scope="col">H</td>
-		</tr>
-		<tr>
-			<td>22세</td>
-			<td>180cm</td>
-			<td>75kg</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-		</tr>
-		<tr>
-			<td scope="row">취미</td>
-			<td colspan="5">태권도</td>
-		</tr>
-		<tr>
-			<td scope="col" colspan="3">소속</td>
-			<td scope="col" colspan="3">출신매체</td>
-		</tr>		
-		<tr>
-			<td colspan="3">그룹</td>
-			<td colspan="3">방송</td>
-		</tr>
-	</tbody>
-		
-</table>
-
--->
+</div>

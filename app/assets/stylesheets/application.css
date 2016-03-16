@@ -76,18 +76,17 @@ font-size: 1rem;
 line-height: 1.5rem;
 }
 
-html,body{width:100%;height:100%}
-
+html,body {
+	width:100%;
+	height:100%;
+	padding: 0;
+    margin: 0;
+}
 a {
      background-color: transparent;
      text-decoration: none;
 }
-bold {
-	font-weight: bold;
-}
-italic {
-	font-style: italic;
-}
+
 
 
 /*result.html*/
@@ -96,7 +95,6 @@ italic {
 .table {
 	margin: auto;
 	width: 100%;
-	/*border-collapse: collapse;*/
 }
 .table, .cell_title, .cell_content {
 	border: 1px solid grey;
@@ -105,12 +103,18 @@ italic {
 	background-color: white;
 }
 .cell_title {
-	width: 18%;
 	background-color: #FFF1F1; 
+	
 }
-	/*가운데 있는 값-cell의 폭을 조절*/
+.cell_title_right {
+	width: 18%;
+}
+
+	/*가운데 있는 값-cell의 폭을 조절
+	 narrow-table 용*/
 .cell_content_middle {
 	width: 45%;
+	/**************/
 
 }
 	/*가로모드와 데스크탑 모드를 위한 .wide_table의 .cell_title 폭 조절*/
@@ -125,6 +129,7 @@ italic {
 .wide_table .cell_content_middle2 {
 	width: 10%;
 }
+	/**********/
 
 /* 삭제할 것.임시
 .small_picture {
@@ -162,16 +167,14 @@ italic {
 	font-weight: normal;
 	font-size: 0.7rem;
 }
-/*자간을 줄이기 위한 클레스*/
-.word_narrow {
-	letter-spacing: -0.05rem;
-}
 .cell_head {
 	text-align: left;
-	font-size: 0.8rem;
+	font-size: 1rem;
+	line-height: 1.9rem;
 	color: white;
 	background-color: #F06161;
 	padding: 0 0.5rem;
+	height: 1.9rem;
 }
 .box-outter {
 	display: block;
@@ -183,59 +186,72 @@ italic {
 	width: 100%;
 	vertical-align: middle;
 }
-/*card_picture_table의 head요소가 같은 sibling인 이미지 상단에 위치하도록
-absolute속성을 줌. table에는 relative, table_head는 ablolute.
-head는 inline 요소이므로, 그 내부의 span이 수직 가운데 정렬하기 위해서는
-span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vertical-align:middle; 설정*/
+	/*card_picture_table의 head요소가 같은 sibling인 이미지 상단에 위치하도록
+	absolute속성을 줌. table에는 relative, table_head는 ablolute.
+	------이하 미작동(연구 필요)-----head는 inline 요소이므로, 그 내부의 span이 수직 가운데 정렬하기 위해서는
+	span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vertical-align:middle; 설정*/
 .card_picture_table {
 	position: relative;
 }
 .card_picture_table_head {
 	position: absolute;
 	width: 100%;
-	height: 1.7rem;
+	height: 1.9rem;
 	padding: 0;
+	/*아래의 line-height는 cell_head의 line-head값을 덮어씌우기 위한 것.*/
+	line-height: 1.7rem;
 }
 .card_picture_table_head_string {
-	font-size: 1rem;
+	font-size: 1.1rem;
 	display: inline-block;
 	vertical-align: middle;
+	
 	margin: 0 0.5rem;
 }
-/**/
+	/************/
 
 
 /*index.html*/
 
 .navbar-wrapper {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index: 1;
 	width: 100%;
-	background-color: #CC3D3D;
 	vertical-align: middle;
-	box-shadow: 0px 2px 2px gray;
+	/*box-shadow: 0px 2px 2px gray;*/
 	overflow: hidden;
 }
 
-.navbar-wrapper .nav-item, .navbar-wrapper .nav-title {
+.navbar-wrapper .nav-item {
 	float: left;
 	color: white;
 	text-decoration: none;
 	list-style: none;
 	padding: 0.6rem 0.3rem;
-	font-size: 1rem;
+	font-size: 1.2rem;
 }
 	/*nav상의 바로가기 버튼이 전체로서는 우측으로 float되도록*/
 .navbar-wrapper .nav-list {
+	line-height: 1.4rem;
 	float: right;
 }
 
 .navbar-wrapper .nav-title {
-	font-size: 1.2rem;
+	float: left;
+	color: white;
+	text-decoration: none;
+	list-style: none;
+	padding: 0.6rem 0.3rem;
+	font-size: 1.5rem;
 	font-style: italic;
 	font-weight: bold;
 }
 	/*li테그중 sepator 클래스의 padding을 0으로 만들어주기 위한것. 항상 바로 위의 코드 아래에 위치해야 함. 주의할것*/
 .navbar-wrapper .nav-item.separator {
-	padding: 0.6em 0;
+	padding: 0.6rem 0;
+	
 }
 
 .navbar-wrapper:hover .nav-item:hover {
@@ -251,10 +267,10 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
 }
 
 /*home.html*/
-.home-wrapper, .result-wrapper {
+.home-wrapper, .result-wrapper, .search-wrapper {
 	text-align: center;
 	overflow: hidden;
-	padding: 1.7rem 3rem;
+	padding: 3.5rem 3rem;
 	line-height: 1.5em;
 }
 .home-wrapper .hello .h1 {
@@ -286,7 +302,71 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
 	display: none;
 }
 
+/*serch.html*/
+	/*search-wrapper에 대한 설정은 home-wrapper와 함께*/
+.select_box {
+	height: 3rem;
+	text-align: center;
+}
+.select_box_full_length {
+	width: 100%;
+}
+.select_box_half_length {
+	width: 60%;
+}
+.cell_content_half {
+	text-align: left;
+}
+.select_field>.unit {
+	font-weight: bold;
+}
+.select_box {
+	font-size: 1.2rem;
+}
 
+
+
+/**********도구모음****************/
+.danpoong-gra {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cc3d3d+4,8f0222+88,6d0019+100 */
+background: #cc3d3d; /* Old browsers */
+background: -moz-linear-gradient(top, #cc3d3d 4%, #8f0222 88%, #6d0019 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #cc3d3d 4%,#8f0222 88%,#6d0019 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #cc3d3d 4%,#8f0222 88%,#6d0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+.kurenai-gra {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cc3d3d+4,e50043+88,6d0019+100 */
+background: #cc3d3d; /* Old browsers */
+background: -moz-linear-gradient(top, #cc3d3d 4%, #e50043 88%, #6d0019 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #cc3d3d 4%,#e50043 88%,#6d0019 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #cc3d3d 4%,#e50043 88%,#6d0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+.kurenai {
+	background-color: #E50043;
+}
+.kurenai-down {
+	/* 아래와 같은색 background: rgb(211,43,63);*/
+	background-color: #D32B3F;
+}
+bold {
+	font-weight: bold;
+}
+italic {
+	font-style: italic;
+}
+/*자간을 줄이기 위한 클레스*/
+.word_narrow {
+	letter-spacing: -0.05rem;
+}
+.one_p_two_rem {
+	font-size: 1.2rem;
+}
+.one_p_five_rem {
+	font-size: 1.5rem;
+}
+/**********************************/
 
 /******************/
 
@@ -295,8 +375,17 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
 }
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-
+@media (min-width: 768px) and (max-width: 1024px) {
+	html {
+		font-size: 1.3rem;
+	}
+ 
+ 	.narrow_table {
+ 		display: none;
+ 	}
+ 	.wide_table {
+ 		display: block;
+ 	}
 }
 	
 /* Landscape phone to portrait tablet */
@@ -315,10 +404,11 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
 	html {
 		font-size: 2.3rem;
 	}
-	.result-wrapper {
-		padding: 1.7rem;
+	/*기본값보다 좌우 패딩이 작아짐. 모바일용*/
+	.result-wrapper, .search-wrapper, .home-wrapper {
+		padding: 3.5rem 1.7rem;
 	}
-	.box-outter {
+	.box-outter, {
 		width: 100%;
 	}
 	
@@ -352,10 +442,34 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
 /* #### iPhone 4+ Portrait or Landscape #### */
 @media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
   /* some CSS here */
- 	html {
+  	html {
 		font-size: 2.3rem;
-	}	
+	}
+	/*기본값보다 좌우 패딩이 작아짐. 모바일용*/
+	.result-wrapper, .search-wrapper, home-wrapper {
+		padding: 3.5rem 1.7rem;
+	}
+	.box-outter {
+		width: 100%;
+	}
+	
  
+}
+
+/* #### nexus6 iphone6 Portrait or Landscape #### */
+@media screen and (min-device-width: 640px) and (max-device-width: 768px){
+  /* some CSS here */
+	html {
+		font-size: 1.3rem;
+	}
+ 
+ 	.narrow_table {
+ 		display: none;
+ 	}
+ 	.wide_table {
+ 		display: block;
+ 	}
+	
 }
 
 /* #### Tablets Portrait or Landscape #### */
@@ -386,6 +500,9 @@ span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vert
  	}
  	.wide_table {
  		display: block;
+ 	}
+ 	.box-outter {
+ 		width: 810px;
  	}
  	/*
 	.narrow_table {
