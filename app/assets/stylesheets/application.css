@@ -76,6 +76,8 @@ font-size: 1rem;
 line-height: 1.5rem;
 }
 
+html,body{width:100%;height:100%}
+
 a {
      background-color: transparent;
      text-decoration: none;
@@ -88,9 +90,7 @@ a {
 .table {
 	margin: auto;
 	width: 100%;
-	height: width*30%;
 	/*border-collapse: collapse;*/
-	border: 1px solid grey;
 }
 .table, .cell_title, .cell_content {
 	border: 1px solid grey;
@@ -99,33 +99,63 @@ a {
 	background-color: white;
 }
 .cell_title {
-	background-color: #D4F4FA; 
+	width: 20%;
+	background-color: #FFF1F1; 
 }
+	/*가운데 있는 값-cell의 폭을 조절*/
+.cell_content_middle {
+	width: 40%;
+
+}
+#table-up {
+	border-bottom: none;
+}
+/* 삭제할 것.임시
 .small_picture {
 	width: 100%;
 	margin: 0 0;
 }
-.cell_picture {
+아래  .small_picture도 삭제할 것
+*/
+	/*작은 사진을 수직중앙에 위치시키기 위하여 .small_picture, .small_picture_cell을 설정*/
+.small_picture, .small_picture_cell {
 	vertical-align: middle;
-	text-align: center;
-	width: 27%;
+}
+.small_picture_cell {
+	width: 40%;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: none;
 }
 .cell_content {
 	font-weight: bold;
 }
-.box {
+.cell_content>.unit {
+	font-weight: normal;
+	font-size: 0.7rem;
+}
+.name {
+	letter-spacing: -0.05rem;
+}
+.cell_head {
+	text-align: left;
+	font-size: 0.8rem;
+	color: white;
+	background-color: #F06161;
+	padding: 0 0.5rem;
+}
+.box-outter {
+	margin: 0.5rem;
 	display: block;
 	margin: auto auto;
-	/*
-	background-image: url('/assets/Hibiki Ganaha.jpg');
-	background-size:cover;
-    background-repeat:no-repeat;
-	*/
 	width: 100%;
+	vertical-align: middle;
 }
 .card_picture {
 	width: 100%;
+	vertical-align: middle;
 }
+
 
 /*index.html*/
 
@@ -203,6 +233,10 @@ a {
 	color: white;
 }
 
+/*아래의 태그는 반응형 페이지를 위한 태그. 높은 해상도용 태이블을 평상시에 감추는 역할.*/
+.wide_table, .wide_small_picture {
+	display: none;
+}
 
 
 
@@ -210,16 +244,11 @@ a {
 
 /* Large desktop */
 @media (min-width: 1200px) {
-	.box {
-		width: 700px;
-	}
 }
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	.box {
-		width: 700px;
-	}
+
 }
 	
 /* Landscape phone to portrait tablet */
@@ -236,34 +265,72 @@ a {
 @media screen and (max-device-width: 480px) and (orientation: portrait){
   /* some CSS here */
 	html {
-		font-size: 3rem;
-	}
+		font-size: 2.5rem;
+	}	
+	
 }
 
 /* #### Mobile Phones Landscape #### */
 @media screen and (max-device-width: 640px) and (orientation: landscape){
   /* some CSS here */
  	html {
-		font-size: 1.5rem;
+		font-size: 2.5rem;
 	}
 }
 
 /* #### Mobile Phones Portrait or Landscape #### */
 @media screen and (max-device-width: 640px){
   /* some CSS here */
+	html {
+		font-size: 2.5rem;
+	}
 }
 
 /* #### iPhone 4+ Portrait or Landscape #### */
 @media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
   /* some CSS here */
+ 	html {
+		font-size: 2.5rem;
+	}	
+ 
 }
 
 /* #### Tablets Portrait or Landscape #### */
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
   /* some CSS here */
+	html {
+		font-size: 2.5rem;
+	}
 }
 
 /* #### Desktops #### */
 @media screen and (min-width: 1024px){
   /* some CSS here */
+ html {
+		font-size: 1rem;
+	}
+ 
+ 
+	.narrow_table {
+		display: none;
+	}
+	.wide_table {
+		display: block;
+	}
+	.total {
+		width: 70%;
+		float:left
+		
+	}
+	#wide_small_picture {
+		display: block;
+		width: 30%;
+		float: right;
+	}
+	.box-inner:after {
+  		display: block;
+  		content: '';
+  		clear: both;
+	}
+	
 }

@@ -77,10 +77,10 @@ $(document).ready(function() {
 	
 	$('.card_picture').on('click', function(e) {
 		$(this).hide();
-		$(this).closest('.box').children('.table_click').fadeToggle();
+		$(this).closest('.box-outter').children('.box-inner').fadeToggle();
 	});
-	$('.table_click').on('click', function(e) {
-		$(this).hide();
-		$(this).closest('.box').children('.card_picture').fadeToggle();
+	$('.box-inner').on('click', function(e) {
+		$(this).closest('.box-inner').hide();
+		$(this).closest('.box-outter').children('.card_picture').fadeToggle();
 	});
 });
