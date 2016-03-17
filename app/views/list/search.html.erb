@@ -57,9 +57,9 @@
 	<h1><strong>당신의 아이돌을 검색하시오</strong></h1>
 
 	<%= form_tag({controller: :list, action: :result},{id: 'search_form', class: 'search_table'}) do%>
-		<table border="1" cellspacing="0" cellpadding="0" class="table table_click">
+		<table border="1" cellspacing="0" cellpadding="0" class="profile_table table table_click">
 			<thead>
-				<th colspan="4" class="cell_head kurenai-down">》PROFILE</th>
+				<th colspan="4" class="cell_head kurenai">》PROFILE</th>
 			</thead>
 			<tbody>
 				<tr>
@@ -153,10 +153,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" scope="row" class="cell_title cell_title_right">연령</td>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">소속</td>
 					<td colspan="2" class="cell_content">
 						<div class='select_field'>
-							<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box select_box_full_length', include_blank: '모든 값'}%>
+							<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box select_box_full_length', include_blank: '전체'}%>
 						</div>
 					</td>
 				</tr>
@@ -164,7 +164,7 @@
 			</tbody>
 		</table>
 	
-	<%=submit_tag '검색'%>
+	<button type="submit" class="search-btn">검색</button>
 	
 	<%end%>	
 	

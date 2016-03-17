@@ -100,12 +100,16 @@
 		<table border="1" cellspacing="0" cellpadding="0" class="card_picture_table table table_click">
 			<thead>
 					<th colspan="1" class="card_picture_table_head cell_head bold kurenai-down">
-						<span class="card_picture_table_head_string">》<%= t.nameko %></span>
+						<div>
+							<span class="card_picture_table_head_string">》<%= t.nameko %></span>
+						</div>
 					</th>
 			</thead>
 			<tbody>
 				<tr>
-					<td><img src='assets/Hibiki Ganaha.jpg' class='card_picture table_click'></td>
+					<td>
+						<img src='assets/card/<%=t.nameen.downcase%>.jpg' class='card_picture table_click' onerror="this.src='/assets/default.jpg'">
+					</td>
 					<!--
 					<td rowspan="1" class="cell_content picture_cell" style='background-image: url("/assets/Ganaha Hibiki.jpg")'></td>
 					-->
@@ -119,7 +123,7 @@
 	<div class="box-inner" style="display: none;">
 		
 		<div class="narrow_table">
-			<table border="1" cellspacing="0" cellpadding="0" class="table table_click">
+			<table border="1" cellspacing="0" cellpadding="0" class="profile_table table table_click">
 				<thead>
 					<td colspan="4" class="cell_head kurenai">》PROFILE</td>	
 				</thead>
@@ -127,11 +131,9 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="1" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/Chihaya Kisaragi1.jpg")'>
+						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg")'></td>
 								
-								<!--
-								<%=image_tag('Hibiki Ganaha1.jpg', class: 'small_picture table_click')%></td>
-								-->
+							
 						
 					</tr>
 					<tr>
@@ -192,7 +194,7 @@
 		
 		<div class="wide_table" >
 		
-			<table border="1" cellspacing="0" cellpadding="0" class="table table_click">
+			<table border="1" cellspacing="0" cellpadding="0" class="profile_table table table_click">
 				<thead>
 					<th colspan="5" class="cell_head kurenai">》PROFILE</th>
 				</thead>
@@ -200,12 +202,9 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/Chihaya Kisaragi1.jpg")'>
+						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg")'></td>
 								
-								<!--
-								<%=image_tag('Hibiki Ganaha1.jpg', class: 'small_picture table_click')%></td>
-								-->
-						
+
 					</tr>
 					<tr>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameja%></td>

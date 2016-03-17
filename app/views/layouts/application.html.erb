@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+<!-- top으로 가기위한 엥커-->
+<a name="top"></a>
+
+<!--상단 네비바-->
 <div class="navbar-wrapper kurenai-gra">
 	<nav class="navbar">
 		<a href="/" class="linktext"><div class="nav-title italic bold">
@@ -21,7 +26,26 @@
 	</nav>
 </div>
 
+
+
+
 <%= yield %>
 
+<!--하단 화살표 네비바-->
+<ul class="nav-control kurenai-down">
+	<li>
+		<a href="#top" id="goTopBtn" class="nav-control-btn">
+			<span class="arrow-up-b">▲</span>
+		</a>
+	</li>
+	<li>
+		<a href="#bottom" id="goBottomBtn" class="nav-control-btn">
+			<span class="arrow-down-b">▼</span>
+		</a>
+	</li>
+</ul>
+
+<!-- bottom으로 가기위한 엥커-->
+<a name="bottom"></a>
 </body>
 </html>

@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css); 
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -70,10 +73,15 @@ table {
   src: url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css) format("truetype");
 }
 */
+
+
+
+
 html {
-/*font-family: 'Jeju Hallasan', serif;*/
-font-size: 1rem;
-line-height: 1.5rem;
+	/*font-family: 'Jeju Hallasan', sans-serif;*/
+	/*font-family: 'Nanum Gothic', sans-serif;*/
+	font-size: 1rem;
+	line-height: normal;
 }
 
 html,body {
@@ -129,37 +137,22 @@ a {
 .wide_table .cell_content_middle2 {
 	width: 10%;
 }
-	/**********/
 
-/* 삭제할 것.임시
-.small_picture {
-	width: 100%;
-	margin: 0 0;
-}
-아래  .small_picture도 삭제할 것
-*/
-/* 삭제할것
-	작은 사진을 수직중앙에 위치시키기 위하여 .small_picture, .small_picture_cell을 설정
-.small_picture, .small_picture_cell {
-	vertical-align: middle;
-}
-*/
+
+
 	/*그림이 배경화면으로 있는 cell에서, 배경 그림의 중앙을 출력하기 위한 코드(.picture_cell)*/
 	/*small_picture_cell의 크기는, 내용이 없어서 조정 불가했으며,
 	대신 전체 태이블의 크기를 100%으로 잡은 후, 그 안의 인접 cell(title과 content, 특히 middle_cotent의
 	가로 길이를 조정함으로써 (100-가로 길이(%))만큼의 비율이 small_picture_cell의 가로 길이가 되고,
 	높이는 각 cell의 높이의 합으로 정해짐.*/
 	/*중요한 점은, 인접 cell이 없는 단독상태의 '배경만있고 내용이 없는 cell은 화면에 출력되지 않음. 뻥 뚤리거나 안나옴*/
+	/*background-size: cover는 그림의 너비, 높이 중 짧은 것의 길이를 cell의 길이와 같게 한다.
+	그리고 background-position: center center;로 백그라운드의 위치를 가운데로 맞추면 끝*/
 .picture_cell {
-	background-position: center center;
 	background-size: cover;
-	background-repeat: none;
+	background-position: center center;
 }
-/* 삭제할 것.
-.small_picture_cell {
-	width: 40%;
-}
-*/
+
 .cell_content {
 	font-weight: bold;
 }
@@ -170,11 +163,17 @@ a {
 .cell_head {
 	text-align: left;
 	font-size: 1rem;
-	line-height: 1.9rem;
+	/*line-height: 1.9rem;*/
 	color: white;
 	background-color: #F06161;
 	padding: 0 0.5rem;
 	height: 1.9rem;
+}
+.profile_table .cell_head {
+	line-height: 1.9rem;
+}
+.cell_head div {
+	display: inline-block;
 }
 .box-outter {
 	display: block;
@@ -196,10 +195,10 @@ a {
 .card_picture_table_head {
 	position: absolute;
 	width: 100%;
-	height: 1.9rem;
+	/*height: 1.9rem;*/
 	padding: 0;
 	/*아래의 line-height는 cell_head의 line-head값을 덮어씌우기 위한 것.*/
-	line-height: 1.7rem;
+	/*line-height: 1.7rem;*/
 }
 .card_picture_table_head_string {
 	font-size: 1.1rem;
@@ -254,7 +253,7 @@ a {
 	
 }
 
-.navbar-wrapper:hover .nav-item:hover {
+.navbar-wrapper .nav-item:hover {
 	background-color: #FFA9A9;
 	color: black;
 }
@@ -264,6 +263,41 @@ a {
 }
 .navbar-wrapper .linktext:visited {
 	color: white;
+}
+	/*하단 네비바*/
+.nav-control {
+	position: fixed;
+    right: 0;
+    bottom: 0;
+    list-style-type: none;
+    border-bottom: none;
+    border-right: none;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    opacity: 0.8;
+    z-index: 90005;
+    font-size: 1.5rem;
+}
+.nav-control-btn {
+	display: inline-block;
+	width: 2.5rem;
+    height: 2.3rem;
+	color: white;
+	text-align: center;
+}
+.nav-control li {
+	float: left;
+}
+.nav-control #goBottomBtn {
+	border-left: 0.1rem dashed #ccc;
+}
+.nav-control-btn:hover {
+	background-color: #FFA9A9;
+	color: black;
+}
+.arrow-up-b, .arrow-down-b {
+	vertical-align: middle;
 }
 
 /*home.html*/
@@ -281,7 +315,7 @@ a {
 .home-wrapper .hello .h3 {
 	font-size: 0.8rem;
 }
-.home-wrapper .search-btn {
+.search-btn {
 	font-size: 1.5rem;
 	height: 2.5rem;
 	width: 5rem;
@@ -291,16 +325,12 @@ a {
 	margin: 1.6rem;
 	box-shadow: 0 2px grey;
 }
-.home-wrapper .search-btn:hover {
+.search-btn:hover {
 	background-color: #CC3D3D;
 	color: white;
 }
 
-/*아래의 태그는 반응형 페이지를 위한 태그. 높은 해상도용 태이블을 평상시에 감추는 역할.*/
-/*html에서 diplay:none을 설정하면, 우선순위에 따라 css에서 조정한 내용은 후순위로 밀리게 되어 작동안함. 주의*/
-.wide_table {
-	display: none;
-}
+
 
 /*serch.html*/
 	/*search-wrapper에 대한 설정은 home-wrapper와 함께*/
@@ -322,9 +352,26 @@ a {
 }
 .select_box {
 	font-size: 1.2rem;
+	padding: 0 0.5rem;
+	background-color: white; 
+}
+.search-wrapper .search-btn {
+	width: 100%;
+	box-shadow: 0 2px grey;
+}
+
+.search-btn, select_box {
+	font-family: 'Nanum Gothic', 'Nanum', sans-serif;
 }
 
 
+
+
+/*아래의 태그는 반응형 페이지를 위한 태그. 낮은 해상도용 태이블을 평상시에 감추는 역할.*/
+/*html에서 diplay:none을 설정하면, 우선순위에 따라 css에서 조정한 내용은 후순위로 밀리게 되어 작동안함. 주의*/
+.narrow_table {
+	display: none;
+}
 
 /**********도구모음****************/
 .danpoong-gra {
@@ -376,16 +423,7 @@ italic {
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 1024px) {
-	html {
-		font-size: 1.3rem;
-	}
- 
- 	.narrow_table {
- 		display: none;
- 	}
- 	.wide_table {
- 		display: block;
- 	}
+
 }
 	
 /* Landscape phone to portrait tablet */
@@ -406,11 +444,29 @@ italic {
 	}
 	/*기본값보다 좌우 패딩이 작아짐. 모바일용*/
 	.result-wrapper, .search-wrapper, .home-wrapper {
-		padding: 3.5rem 1.7rem;
+		padding: 3.5rem 0;
 	}
-	.box-outter, {
+	.box-outter {
 		width: 100%;
 	}
+	.narrow_table {
+ 		display: block;
+ 	}
+ 	.wide_table {
+ 		display: none;
+ 	}
+ 	/*아래 두 클래스 .card_picture_table과 .card_picture_table_head
+ 	는 현재 상단에서 데스크탑의 경우, 전자는 relative, 후자는 absolute로 겹치게
+ 	해놓았으나, 모바일에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
+ 	코드*/
+ 	.card_picture_table {
+		position: static;
+	}
+	.card_picture_table_head {
+		position: static;
+	}
+	/******/
+ 	
 	
 }
 
@@ -421,13 +477,7 @@ italic {
 		font-size: 1.3rem;
 	}
 	 
- 	.narrow_table {
- 		display: none;
- 	}
- 	.wide_table {
- 		display: block;
- 	}
-	
+
 	
 
 }
@@ -440,6 +490,7 @@ italic {
 }
 
 /* #### iPhone 4+ Portrait or Landscape #### */
+/* 심지어 이 설정이 아이폰만이 아니라, 갤럭시 모바일쪽도 적용을 받는다...*/
 @media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
   /* some CSS here */
   	html {
@@ -447,11 +498,28 @@ italic {
 	}
 	/*기본값보다 좌우 패딩이 작아짐. 모바일용*/
 	.result-wrapper, .search-wrapper, home-wrapper {
-		padding: 3.5rem 1.7rem;
+		padding: 3.5rem 1.5rem;
 	}
 	.box-outter {
 		width: 100%;
 	}
+	.narrow_table {
+ 		display: block;
+ 	}
+ 	.wide_table {
+ 		display: none;
+ 	}
+ 	/*아래 두 클래스 .card_picture_table과 .card_picture_table_head
+ 	는 현재 상단에서 데스크탑의 경우, 전자는 relative, 후자는 absolute로 겹치게
+ 	해놓았으나, 모바일에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
+ 	코드*/
+ 	.card_picture_table {
+		position: static;
+	}
+	.card_picture_table_head {
+		position: static;
+	}
+	/******/
 	
  
 }
@@ -462,14 +530,7 @@ italic {
 	html {
 		font-size: 1.3rem;
 	}
- 
- 	.narrow_table {
- 		display: none;
- 	}
- 	.wide_table {
- 		display: block;
- 	}
-	
+
 }
 
 /* #### Tablets Portrait or Landscape #### */
@@ -479,13 +540,44 @@ italic {
 		font-size: 1.3rem;
 	}
  
- 	.narrow_table {
- 		display: none;
- 	}
- 	.wide_table {
- 		display: block;
- 	}
-	
+
+}
+
+/* #### tablets nexus7 #### */
+@media screen and (min-device-width: 1024px) and (orientation: portrait){
+  /* some CSS here */
+  
+  /*지우고, 현재 모바일 중심으로 설계되어 있으니, 데스크탑 중심으로 재설계
+  반대로 설정. 즉 wide narrow 기본 display 서로 바꾸기 */
+	html {
+		font-size: 1.3rem;
+	}
+ 
+
+ 
+ 	/*
+	.narrow_table {
+		display: none;
+	}
+	.wide_table {
+		display: block;
+	}
+	.total {
+		width: 70%;
+		float:left
+		
+	}
+	#wide_small_picture {
+		display: block;
+		width: 30%;
+		float: right;
+	}
+	.box-inner:after {
+  		display: block;
+  		content: '';
+  		clear: both;
+	}
+	*/
 }
 
 /* #### Desktops #### */
