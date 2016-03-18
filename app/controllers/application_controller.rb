@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     #key는 string오로 입력하면 symbol로 변환함.
     #신장
      @RangeArrayRaw = Idol.select(key.to_sym).distinct.pluck(key.to_sym).flatten
+     @RangeArrayRaw.select! {|v| v>=0}
      @MinRaw = (@RangeArrayRaw.min / unit).floor
      @MaxRaw = (@RangeArrayRaw.max / unit).floor
      @RangeArray = {}
@@ -16,5 +17,6 @@ class ApplicationController < ActionController::Base
      end
      return @RangeArray
   end 
+  
   
 end

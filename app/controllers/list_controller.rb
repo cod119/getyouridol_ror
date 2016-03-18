@@ -27,8 +27,8 @@ class ListController < ApplicationController
   end
   
   def result
-    @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
-    @idols = Idol.all.order(nameko: :asc)
+    
+    @idols = Idol.all.order(nameko: :asc).distinct
     
     #성별
     if params[:gender] != ""
@@ -39,27 +39,43 @@ class ListController < ApplicationController
     
     #연령
     @ageMMarray = params[:age].split('-')
+    @ageUnknown = params[:ageUnknown].to_i
+    if !@ageUnknown
+      @idols = @idols.where('age >= 0')
+    end
     if params[:age] != "" and params[:age] != '5-41'
-      @idols = @idols.where('age >= ? AND age <= ?', @ageMMarray[0], @ageMMarray[1])
+      @idols = @idols.where('age >= ? AND age <= ? OR age < 0', @ageMMarray[0], @ageMMarray[1])
     elsif params[:age] == '5-41'
       @idols = @idols.where('age <= ? OR age >= ?', @ageMMarray[0], @ageMMarray[1])
     else
     end
     
     #신장
-    @idols = @idols.where('height >= ? AND height < ?', params[:heightMin], params[:heightMax])
+    @heightUnknown = params[:heightUnknown].to_i
+    if !@heightUnknown
+      @idols = @idols.where('height >= 0')
+    end
+    @idols = @idols.where('height >= ? AND height < ? OR height < 0', params[:heightMin], params[:heightMax])
     
     #체중
-    @idols = @idols.where('weight >= ? AND weight < ?', params[:weightMin], params[:weightMax])
+    @weightUnknown = params[:weightUnknown].to_i
+    if !@weightUnknown
+      @idols = @idols.where('weight >= 0')
+    end
+    @idols = @idols.where('weight >= ? AND weight < ? OR weight < 0', params[:weightMin], params[:weightMax])
     
     #b
-    @idols = @idols.where('b >= ? AND b < ?', params[:bMin], params[:bMax])
+    @bwhUnknown = params[:bwhUnknown].to_i
+    if !@bwhUnknown
+      @idols = @idols.where('b >= 0 AND w >= 0 AND h >= 0')
+    end
+    @idols = @idols.where('b >= ? AND b < ? OR b < 0', params[:bMin], params[:bMax])
     
     #w
-    @idols = @idols.where('w >= ? AND w < ?', params[:wMin], params[:wMax])
+    @idols = @idols.where('w >= ? AND w < ? OR w < 0', params[:wMin], params[:wMax])
     
     #h
-    @idols = @idols.where('h >= ? AND h < ?', params[:hMin], params[:hMax])
+    @idols = @idols.where('h >= ? AND h < ? OR h < 0', params[:hMin], params[:hMax])
     
     #소속사
     if params[:productionorunit] != ""

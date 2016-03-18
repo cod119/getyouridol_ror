@@ -71,15 +71,21 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" scope="row" class="cell_title cell_title_right">연령</td>
+					<td colspan="2" rowspan="2" scope="row" class="cell_title cell_title_right">연령</td>
 					<td colspan="2" class="cell_content">
 						<div class='select_field'>
 							<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'form_age', class: 'select_box select_box_full_length', include_blank: '전체'}%>
 						</div>
 					</td>
 				</tr>
+				<tr>
+					<td colspan="2" class="cell_content cell_check_box cbox">
+						<input type="checkbox" name="ageUnknown" value="0" checked="checked" class="check_box">
+						<span class=check_box_desc>연령불명 포함</span>
+					</td>
+				</tr>
 				<tr class='select_field'>
-					<td colspan="2" scope="row" class="cell_title cell_title_right">신장</td>
+					<td colspan="2" rowspan="2" scope="row" class="cell_title cell_title_right">신장</td>
 					
 					<td colspan="1" class="cell_content cell_content_half">
 						
@@ -95,8 +101,14 @@
 					</td>
 					
 				</tr>
+				<tr>
+					<td colspan="2" class="cell_content cell_check_box cbox">
+						<input type="checkbox" name="heightUnknown" value="0" checked="checked" class="check_box">
+						<span class=check_box_desc>신장불명 포함</span>
+					</td>
+				</tr>
 				<tr class='select_field'>
-					<td colspan="2" scope="row" class="cell_title cell_title_right">체중</td>	
+					<td colspan="2" rowspan="2" scope="row" class="cell_title cell_title_right">체중</td>	
 					<td class="cell_content cell_content_half">
 						<%=select_tag 'weightMin', options_for_select(@weightMinRangeArray, @weightMinRangeArray.values.first.to_i), {id: 'form_weightMin', class: 'select_min select_box select_box_half_length'}%>
 							<span class="unit">kg 이상</span>
@@ -106,8 +118,15 @@
 							<span class="unit">kg 미만</span>
 					
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="cell_content cell_check_box cbox">
+						<input type="checkbox" name="weightUnknown" value="0" checked="checked" class="check_box">
+						<span class=check_box_desc>체중불명 포함</span>
+					</td>
+				</tr>
 				<tr class='select_field'>
-					<td colspan="1" rowspan="3" scope="row" class="cell_title">사이즈</td>
+					<td colspan="1" rowspan="4" scope="row" class="cell_title">사이즈</td>
 					<td colspan="1" scope="row" class="cell_title cell_title_half">B</td>
 					<td class="cell_content cell_content_half">
 					
@@ -150,6 +169,13 @@
 						<%=select_tag 'hMax', options_for_select(@hMaxRangeArray, @hMaxRangeArray.values.last.to_i), {id: 'form_hMax', class: 'select_max select_box select_box_half_length'}%>
 								<span class="unit">cm 미만</span>
 					
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1" scope="row" class="cell_title cell_title_half"></td>
+					<td colspan="2" class="cell_content cell_check_box cbox">
+						<input type="checkbox" name="bwhUnknown" value="0" checked="checked" class="check_box">
+						<span class=check_box_desc>사이즈불명 포함</span>
 					</td>
 				</tr>
 				<tr>

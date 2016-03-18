@@ -14,8 +14,9 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css); 
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -47,9 +48,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
+
 ol, ul {
 	list-style: none;
 }
@@ -84,12 +83,18 @@ html {
 	line-height: normal;
 }
 
-html,body {
+body {
+    font-family: 'Nanum Gothic', 'sans-serif';
 	width:100%;
 	height:100%;
 	padding: 0;
     margin: 0;
 }
+
+.jpn {
+	font-family: 'Noto Sans JP', 'Nanum Ghothic';
+}
+
 a {
      background-color: transparent;
      text-decoration: none;
@@ -103,13 +108,61 @@ a {
 .table {
 	margin: auto;
 	width: 100%;
+	border-collapse: separate;
+    border-spacing: 0.1rem;
+    
 }
+	/*위의 .table에서 border-collapse: separate;를 함으로써,
+	.card_picture_table_haed의 크기가 어긋나는 것을 방지하기 위함*/
+.card_picture_table {
+	border-collapse: collapse;
+}
+	/**/
+	
+.cell_head {
+	text-align: left;
+	/*line-height: 1.9rem;*/
+	color: white;
+	background-color: #F06161;
+	padding: 0 0.5rem;
+	height: 1.9rem;
+	
+	
+}
+.profile_table .cell_head {
+	line-height: 1.9rem;
+}
+.cell_head div {
+	display: inline-block;
+}
+
 .table, .cell_title, .cell_content {
-	border: 1px solid grey;
+	/*border: 1px solid grey;*/
 	text-align: center;
 	vertical-align: middle;
 	background-color: white;
 }
+
+
+/*태이블 가장자리 둥글게*/
+.cell_head, .cell_title, .cell_content {
+	border-radius: 0.1rem;
+}
+.card_picture {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-left-radius: 0.1rem;
+	border-bottom-right-radius: 0.1rem;
+}
+
+.card_picture_table_head {
+	border-top-left-radius: 0.1rem;
+	border-top-right-radius: 0.1rem;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+/*   ******   */
 .cell_title {
 	background-color: #FFF1F1; 
 	
@@ -152,6 +205,8 @@ a {
 	background-size: cover;
 	background-position: center center;
 }
+	/****/
+
 
 .cell_content {
 	font-weight: bold;
@@ -160,21 +215,7 @@ a {
 	font-weight: normal;
 	font-size: 0.7rem;
 }
-.cell_head {
-	text-align: left;
-	font-size: 1rem;
-	/*line-height: 1.9rem;*/
-	color: white;
-	background-color: #F06161;
-	padding: 0 0.5rem;
-	height: 1.9rem;
-}
-.profile_table .cell_head {
-	line-height: 1.9rem;
-}
-.cell_head div {
-	display: inline-block;
-}
+
 .box-outter {
 	display: block;
 	margin: auto auto;
@@ -204,8 +245,9 @@ a {
 	font-size: 1.1rem;
 	display: inline-block;
 	vertical-align: middle;
-	
 	margin: 0 0.5rem;
+	/*margin-top은, .card_picture_table_head_string의 수직 위치를 맞추기 위함. 차후 필요시 삭제*/
+	margin-top: 0.2rem;
 }
 	/************/
 
@@ -233,7 +275,7 @@ a {
 }
 	/*nav상의 바로가기 버튼이 전체로서는 우측으로 float되도록*/
 .navbar-wrapper .nav-list {
-	line-height: 1.4rem;
+	line-height: 1.9rem;
 	float: right;
 }
 
@@ -277,12 +319,12 @@ a {
     border-top-left-radius: 5px;
     opacity: 0.8;
     z-index: 90005;
-    font-size: 1.5rem;
+    line-height: 2.7rem;
 }
 .nav-control-btn {
 	display: inline-block;
-	width: 2.5rem;
-    height: 2.3rem;
+	width: 3.2rem;
+    height: 3rem;
 	color: white;
 	text-align: center;
 }
@@ -298,13 +340,14 @@ a {
 }
 .arrow-up-b, .arrow-down-b {
 	vertical-align: middle;
+    font-size: 1.5rem;
 }
 
 /*home.html*/
 .home-wrapper, .result-wrapper, .search-wrapper {
 	text-align: center;
 	overflow: hidden;
-	padding: 3.5rem 3rem;
+	padding: 5rem 3rem;
 	line-height: 1.5em;
 }
 .home-wrapper .hello .h1 {
@@ -335,7 +378,7 @@ a {
 /*serch.html*/
 	/*search-wrapper에 대한 설정은 home-wrapper와 함께*/
 .select_box {
-	height: 3rem;
+	height: 2rem;
 	text-align: center;
 }
 .select_box_full_length {
@@ -347,7 +390,7 @@ a {
 .cell_content_half {
 	text-align: left;
 }
-.select_field>.unit {
+.select_field .unit {
 	font-weight: bold;
 }
 .select_box {
@@ -360,8 +403,24 @@ a {
 	box-shadow: 0 2px grey;
 }
 
-.search-btn, select_box {
-	font-family: 'Nanum Gothic', 'Nanum', sans-serif;
+.search-btn, .select_box {
+	font-family: 'Jeju Gothic', 'Nanum Gothic', 'Nanum', 'sans-serif';
+}
+input[type="checkbox"] {
+	width: 1.2rem;
+	height: 1.2rem;
+	background-color: white;
+}
+
+.check_box_desc {
+	display: inline-block;
+	vertical-align: middle;
+	float: right;
+	margin: 0 0.2rem;
+	font-weight: normal;
+}
+.cell_check_box .check_box {
+	float: right;
 }
 
 
@@ -497,8 +556,8 @@ italic {
 		font-size: 2.3rem;
 	}
 	/*기본값보다 좌우 패딩이 작아짐. 모바일용*/
-	.result-wrapper, .search-wrapper, home-wrapper {
-		padding: 3.5rem 1.5rem;
+	.result-wrapper, .search-wrapper, .home-wrapper {
+		padding: 4rem 1.5rem;
 	}
 	.box-outter {
 		width: 100%;

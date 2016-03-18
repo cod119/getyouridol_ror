@@ -1,101 +1,7 @@
 <% @idols.each do |t| %>
-<!--
-<fieldset>
-	<legend><%=t.nameko%></legend>
-	이름(일): <%=t.nameja%></br>
-	이름(영): <%=t.nameen%></br>
-	CV: <%=t.cv%></br>
-	성별: <%=t.gender%></br>
-	나이: <%=t.age%></br>
-	소속: <%=t.productionorunit%></br>
-	<% if t.productionorunit2 != t.productionorunit %>
-		소속2: <%=t.productionorunit2%></br>
-	<% end %>
-	키/몸무게: <%=t.height%> / <%=t.weight%></br>
-	사이즈(b/w/h): <%=t.b%> / <%=t.w%> / <%=t.h%></br>
-	취미: <%=t.hobby%></br>
-	생일: <%=t.birth%></br>
-	혈액형: <%=t.bloodtype%></br>
-	헤어스타일: <%=t.hairstyle%></br>
-	출신지: <%=t.areafrom%></br>
-	출신매체: <%=t.mediafrom%>
-	<% if t.mediafrom2 != t.mediafrom %>
-		출신매체2: <%=t.mediafrom2%></br>
-	<% end %>
-</fieldset>
--->
+
 <div class="box-outter">
-<!--
-<table border="1" cellspacing="0" cellpadding="0" class="table table_click" style="display: none">
-	<thead>
-		<th colspan="6"><%=t.nameko%></th>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="2" scope="row" class="cell_title cell_title_right">이름</td>
-			<td colspan="3" class="cell_content"><%=t.nameen%></td>
-			<td rowspan="4" colspan="2" class="cell_picture"><%=image_tag('Hibiki Ganaha1.jpg', class: 'small_picture')%></td>
-		</tr>
-		<tr>
-			<td colspan="3" class="cell_content"><%=t.nameja%></td>
-		</tr>
-		<tr>
-			<td scope="row" class="cell_title cell_title_right">CV</td>	
-			<td colspan="3" class="cell_content"><%=t.cv%></td>
-		</tr>
-		<tr>
-			<td scope="row" class="cell_title cell_title_right">생일</td>	
-			<td colspan="3" class="cell_content"><%=t.birth%></td>
-		</tr>
-		<tr>
-			<td scope="row" rowspan="2" class="cell_title cell_title_right">출신</td>	
-			<td colspan="3"rowspan="2" class="cell_content"><%=t.areafrom%></td>
-			<td scope="col" class="cell_title cell_title_up">성별</td>
-			<td scope="col" class="cell_title cell_title_up">혈액형</td>			
-		</tr>
-		<tr>
-			<td class="cell_content"><%=t.gender%></td>
-			<td class="cell_content"><%=t.bloodtype%>형</td>		
-		</tr>
-		<tr>
-			<td scope="col" class="cell_title cell_title_up">연령</td>
-			<td scope="col" class="cell_title cell_title_up">신장</td>
-			<td scope="col" class="cell_title cell_title_up">체중</td>
-			<td scope="col" class="cell_title cell_title_up">B</td>
-			<td scope="col" class="cell_title cell_title_up">W</td>
-			<td scope="col" class="cell_title cell_title_up">H</td>
-		</tr>
-		<tr>
-			<td class="cell_content"><%=t.age%>세</td>
-			<td class="cell_content"><%=t.height%>cm</td>
-			<td class="cell_content"><%=t.weight%>kg</td>
-			<td class="cell_content"><%=t.b%>cm</td>
-			<td class="cell_content"><%=t.w%>cm</td>
-			<td class="cell_content"><%=t.h%>cm</td>
-		</tr>
-		<tr>
-			<td scope="row" class="cell_title cell_title_right">취미</td>
-			<td colspan="5" class="cell_content"><%=t.hobby%></td>
-		</tr>
-		<tr>
-			<td scope="col" colspan="3" class="cell_title cell_title_up">소속</td>
-			<td scope="col" colspan="3" class="cell_title cell_title_up">출신매체</td>
-		</tr>		
-		<tr>
-			<td colspan="3" class="cell_content"><%=t.productionorunit%>
-				<% if t.productionorunit2 != "0" %>
-				</br><%=t.productionorunit2%>
-				<% end %>
-			</td>
-			<td colspan="3" class="cell_content"><%=t.mediafrom%>
-				<% if t.mediafrom2 != "0" %>
-				</br><%=t.mediafrom2%>
-				<% end %>
-			</td>
-		</tr>
-	</tbody>
-</table>
--->
+
 	<div class="box-card">
 		<table border="1" cellspacing="0" cellpadding="0" class="card_picture_table table table_click">
 			<thead>
@@ -108,7 +14,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<img src='assets/card/<%=t.nameen.downcase%>.jpg' class='card_picture table_click' onerror="this.src='/assets/default.jpg'">
+						<img src='assets/card/<%=t.nameen.downcase%>.jpg' class='card_picture table_click' onerror="this.src='/assets/cardpicturenotfound.jpg'">
 					</td>
 					<!--
 					<td rowspan="1" class="cell_content picture_cell" style='background-image: url("/assets/Ganaha Hibiki.jpg")'></td>
@@ -131,13 +37,13 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="1" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg")'></td>
+						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
 								
 							
 						
 					</tr>
 					<tr>
-						<td colspan="1" class="cell_content word_narrow"><%=t.nameja%></td>
+						<td colspan="1" class="cell_content word_narrow jpn"><%=t.nameja%></td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_content word_narrow"><%=t.nameen%></td>
@@ -148,18 +54,37 @@
 					</tr>
 					<tr>
 						<td scope="row" class="cell_title cell_title_right">생일</td>	
-						<td colspan="1" class="cell_content"><%=t.birth%> (<%=t.age%> <span class="unit">세</span>)</td>
+						<td colspan="1" class="cell_content"><%=t.month%> <span class="unit">월</span> <%=t.day%> <span class="unit">일</span> <span class="unit">(</span>
+						<script>
+							if (<%=t.age%> < 0) {
+								document.write("?");
+							} else {
+								document.write(<%=t.age%>);
+							}
+						</script> <span class="unit">세</span><span class="unit">)</span></td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right word_narrow">신장/체중</td>
 						<td colspan="1" class="cell_content cell_content_middle">
-							<%=t.height%> <span class="unit">cm</span> / <%=t.weight%> <span class="unit">kg</span>
+							<script>
+								if (<%=t.height%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.weight%>);
+								}
+							</script> <span class="unit">cm</span> / <script>
+								if (<%=t.weight%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.weight%>);
+								}
+							</script> <span class="unit">kg</span>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right">사이즈</td>
 						<td colspan="3" class="cell_content">
-							B <%=t.b%> <span class="unit">cm</span> / W <%=t.w%> <span class="unit">cm</span> / H <%=t.h%> <span class="unit">cm</span>
+							<span class="unit">B</span> <%=t.b%> <span class="unit">cm</span> / <span class="unit">W</span> <%=t.w%> <span class="unit">cm</span> / <span class="unit">H</span> <%=t.h%> <span class="unit">cm</span>
 						</td>
 					</tr>
 					<tr>
@@ -202,12 +127,12 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg")'></td>
+						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
 								
 
 					</tr>
+						<td colspan="1" class="cell_content word_narrow jpn"><%=t.nameja%></td>
 					<tr>
-						<td colspan="3" class="cell_content word_narrow"><%=t.nameja%></td>
 					</tr>
 					<tr>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameen%></td>
@@ -218,18 +143,55 @@
 					</tr>
 					<tr>
 						<td scope="row" class="cell_title cell_title_right">생일</td>	
-						<td colspan="3" class="cell_content"><%=t.birth%> <span class="unit">(</span><%=t.age%> <span class="unit">세</span><span class="unit">)</span></td>
+						<td colspan="3" class="cell_content"><%=t.month%> <span class="unit">월</span> <%=t.day%> <span class="unit">일</span> <span class="unit">(</span>
+						<script>
+							if (<%=t.age%> < 0) {
+								document.write("?");
+							} else {
+								document.write(<%=t.age%>);
+							}
+						</script> <span class="unit">세</span><span class="unit">)</span></td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right word_narrow">신장/체중</td>
 						<td colspan="3" class="cell_content cell_content_middle">
-							<%=t.height%> <span class="unit">cm</span> / <%=t.weight%> <span class="unit">kg</span>
+							<script>
+								if (<%=t.height%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.height%>);
+								}
+							</script> <span class="unit">cm</span> / <script>
+								if (<%=t.weight%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.weight%>);
+								}
+							</script> <span class="unit">kg</span>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right">사이즈</td>
 						<td colspan="3" class="cell_content">
-							<span class="unit">B</span> <%=t.b%> <span class="unit">cm</span> / <span class="unit">W</span> <%=t.w%> <span class="unit">cm</span> / <span class="unit">H</span> <%=t.h%> <span class="unit">cm</span>
+							<span class="unit">B</span> <script>
+								if (<%=t.b%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.b%>);
+								}
+							</script> <span class="unit">cm</span> / <span class="unit">W</span> <script>
+								if (<%=t.w%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.w%>);
+								}
+							</script> <span class="unit">cm</span> / <span class="unit">H</span> <script>
+								if (<%=t.h%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.h%>);
+								}
+							</script> <span class="unit">cm</span>
 						</td>
 					</tr>
 					<tr>
