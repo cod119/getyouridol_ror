@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	
 
-  	
+// search.html  	
 	$('#search_form').on('change', '.select_min', function(e){
 		e.stopPropagation;
 		var $first = +$(this).val();
@@ -61,7 +61,7 @@ $(document).ready(function() {
 			var $prevAlls = $(this).closest('.cell_content').prevAll('td.cell_content').find('.select_box');
 			console.log($prevAlls.length);
 			console.log($nextAlls.length);
-			//'선택안함'을 선택하지 않았는지 검사
+			//'미선택'을 선택하지 않았는지 검사
 			if ($(this).val() !== "") {
 				//이후에 있는 select_box의 option 중 금방 선택한 값과 같은 option을 제거
 				//부작용: 앞서 있는 select_box의 선택 후 제거된 select_box의 option이 되살아남 
@@ -85,7 +85,7 @@ $(document).ready(function() {
 						$nextAlls.eq(i).each(function() {
 							$(this).find('option').each(function() {
 								for (var j = 0; j < $prevAlls.length; j++) {
-									//아래 && 이후 구문은, '선택안함'이 사라지지 않도록 하기 위함.
+									//아래 && 이후 구문은, '미선택'이 사라지지 않도록 하기 위함.
 									if ($(this).val() === $prevAlls.eq(j).val() && $(this).val() !== "") {
 										$(this).hide();
 									}	
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		e.stopPropagation;
 		var $that = $(this)
 		var $prevAlls = $(this).closest('.cell_content').prevAll('td.cell_content').find('.select_box');
-		//'선택안함'을 선택하지 않았는지 검사
+		//'미선택'을 선택하지 않았는지 검사
 		if ($(this).val() !== "") {
 			// 
 			if ($prevAlls.length >= 1) {
@@ -130,6 +130,7 @@ $(document).ready(function() {
 		}
 	})
 	
+	// 상위 체크박스를 체크/해제할 경우, 하위 체크박스가 모두 체크/해제 되도록.
 	$('#search_form2').on('change', '.check_box_multisel_group', function(e){
 		e.stopPropagation;
 		var $box = $(this).closest('.check_box_multisel_group_box');
@@ -146,6 +147,8 @@ $(document).ready(function() {
 		}
 	}).trigger('change')
 	
+	// 하위 체크박스가 체크될 경우, 하위 체크박스가 모두 체크된 경우라면 상위 체크박스도 체크
+	// 하위 체크박스가 체크 해제된 경우, 상위 체크박스를 체크 해제
 	$('#search_form2').on('change', '.check_box_multisel_indiv', function(e){
 		e.stopPropagation;
 		var $box = $(this).closest('.check_box_multisel_group_box');
@@ -161,44 +164,74 @@ $(document).ready(function() {
 				$box.find('.check_box_multisel_group')[0].checked = false;
 			}
 		}
-		// 추가 조건 검색의 소속사2의 체크박스에 변동이 발생(click)하는 경우
-		// 소속사1의 셀렉트 박스의 선택값을 초기화
-		if ($('#search_form').find('#form_productionorunit').val() !== "") {
-		 	console.log($('#search_form').find('#form_productionorunit').val())
-			$('#search_form').find('#form_productionorunit').val("전체")
-		}
+		
 	}).trigger('change')
+	
 	// 소속사1 셀렉트 박스의 선택값이 변화한 경우, 추가 조건 검색의 소속사2의 모든 체크박스롤 체크로.
 	// 이기능은, 뒤로가기할 때, 추가 조건 선택 박스가 출력도되록 한 아래의 코드로 해결이 가능하므로
+	// (추가조건 선택박스가 출력되면 셀렉트 박스는 초기화&사라지므로 사용자가 셀렉트 박스를 오작동 할 염려 없음)
 	// 솔직히 필요없는 기능이지만, 남겨두겠음.
 	$('#search_form').on('change', '#form_productionorunit', function() {
 		$('#search_form2').find('.check_box_multisel_group, .check_box_multisel_indiv').each(function() {
 			$(this)[0].checked = true;
 		})
 	})
-	//소속사2의 체크박스, 셀렉트 박스등에 변동이 있을 경우(주로 검색 후 뒤로가기 시), .search_form2를 show함
-	if ($('#search_form2').find('.check_box_multisel_indiv').length !== $('#search_form2').find('.check_box_multisel_indiv:checked').length) {
+	// 소속사2의 체크박스(if 구문의 'or' 앞), 셀렉트 박스(if 구문의 'or' 뒤)등에
+	// 이미 변동이 있는 상태인지를 스캔하여
+	// 있을 경우(주로 검색 후 뒤로가기 시), .search_form2를 show함
+	if ($('#search_form2').find('.check_box_multisel_indiv').length !== $('#search_form2').find('.check_box_multisel_indiv:checked').length 
+	|| $('#search_form2').find('.select_box').is(function(){
+		var wasFound = false;
+		$(this).each(function() {
+			if ($(this).val() !== "") {
+				wasFound = true;
+			}
+		});
+		return wasFound;
+	})) {
+		$('#search_form2').find('thead').hide(0);
+		$('#productionorunit_cell_1').hide(0);
 		$('#search_form2').find('tbody').show();
 	}
-	if ($('#search_form2').find('.select_box').val() !== "") {
-		$('#search_form2').find('tbody').show();
-	}
+	
 	//****************
 	
-	// 추가 검색 조건 누르면, 상단의 소속 행이 사라지고 추가 검색 테이블 출력
+	// '상세 검색' 누르면, search_form (상단의 폼)에서 소속 행이 사라지고 추가 검색 테이블 출력
 	// 소속사2의 체크박스의 체크가 모두 사라짐.
-	$('#search_form2').on('click', 'thead', function(e) {
-		$('#productionorunit_cell_1').hide()
+	// 소속사 1의 셀렉트 박스의 선택값을 초기화
+	$('#search_form2').on('click', 'button', function(e) {
+		$('#productionorunit_cell_1').hide(0);
+		$('#search_form2').find('thead').hide(0);
 		e.stopPropagation;
 		var $that = $(this)
 		$(this).closest('#search_form2').find('tbody').show('fast')
 		$('#search_form2').find('.check_box_multisel_group, .check_box_multisel_indiv').each(function() {
 			$(this)[0].checked = false;
 		})
+		
+		// 추가 조건 검색의 소속사2의 체크박스에 변동이 발생(click)하는 경우(감싸고 있는 코드가 작동하면)
+		// 소속사1의 셀렉트 박스의 선택값을 초기화
+		if ($('#search_form').find('#form_productionorunit').val() !== "") {
+		 	console.log($('#search_form').find('#form_productionorunit').val())
+			$('#search_form').find('#form_productionorunit').val("전체")
+			//초기화되어야할 셀렉트 박스를 여기에 추가 입력 가능.
+		}
 				
-	}).trigger('click')
+	})
 	
-	//result.html
+	$('.search-wrapper').on('click', '.check_box_desc', function(e) {
+		e.stopPropagation;
+		
+		$(this).closest('label').find('.check_box').prop( "checked", function( i, val ) {
+			return !val;
+		});
+		
+		console.log('hello')
+	})
+	
+
+
+//result.html
 	$('.box-card').on('click', function(e) {
 		$(this).hide('fast', function(){
 			$(this).closest('.box-outter').children('.box-inner').fadeToggle('fast');
@@ -216,3 +249,4 @@ $(document).ready(function() {
 		$('#result_nothing').show();
 	}
 });
+

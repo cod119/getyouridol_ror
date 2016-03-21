@@ -411,6 +411,16 @@ a {
 	font-family: 'Nanum Gothic', 'Nanum', 'sans-serif';
 	font-weight: bold;
 }
+
+.search-btn.search_additional {
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	background-color: #f8f8f8;
+}
+.search-btn.search_additional:hover {
+	background-color: #CC3D3D;
+	color: white;
+}
 input[type="checkbox"] {
 	width: 1.2rem;
 	height: 1.2rem;
@@ -432,6 +442,8 @@ input[type="checkbox"] {
 }
 .check_box_multisel_group_box {
 	text-align: left;
+	float: left;
+	margin: 0.5rem;
 }
 .check_box_multisel_indiv_box {
 	text-align: left;
