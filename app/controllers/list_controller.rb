@@ -5,7 +5,7 @@ class ListController < ApplicationController
   end
   
   def search
-     @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
+     
      @idols = Idol.all.order(nameko: :asc)
      
      #신장
@@ -23,6 +23,23 @@ class ListController < ApplicationController
      #h
      @hMinRangeArray = rangeArray('h', 5, 0)
      @hMaxRangeArray = rangeArray('h', 5, 1)
+     #소속사
+     @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
+     #hairstyle
+     @hairstyle = nonRangeArray('hairstyle', 0)
+     @hairstyle2 = (nonRangeArray('hairstyle2', 0) + nonRangeArray('hairstyle3', 0)).uniq
+     @hairstyle3 = @hairstyle2
+     #feature
+     @feature = (nonRangeArray('feature', 0) + nonRangeArray('feature2', 0) + nonRangeArray('feature3', 0)).uniq
+     #소속사2
+     @mediafromP = Idol.select(:mediafromP).distinct.order(mediafromP: :asc).pluck(:mediafromP)
+     @mediafromP_1 = {}
+     @mediafromP.each do |v|
+       one = Idol.where('mediafromP = ?', v).select(:productionorunit).distinct.order(productionorunit: :asc).pluck(:productionorunit)
+       two = Idol.where('mediafromP = ?', v).select(:productionorunit2).distinct.order(productionorunit2: :asc).pluck(:productionorunit2)
+       total = (one + two).uniq
+       @mediafromP_1[v.to_sym] = total.select {|l| l != "0"}
+     end
      
   end
   
@@ -82,6 +99,51 @@ class ListController < ApplicationController
       #@idols = Idol.where(productionorunit: params[:productionorunit])
       @idols = @idols.where('productionorunit = ? OR productionorunit2 = ?', params[:productionorunit], params[:productionorunit])
     end
+    
+    #헤어스타일
+    if params[:hairstyle] != ""
+      @idols = @idols.where('hairstyle = ?', params[:hairstyle])
+    end
+    if params[:hairstyle2] != ""
+      @idols = @idols.where('hairstyle2 = ? OR hairstyle3 = ?', params[:hairstyle2], params[:hairstyle2])
+    end
+    if params[:hairstyle3] != ""
+      @idols = @idols.where('hairstyle2 = ? OR hairstyle3 = ?', params[:hairstyle3], params[:hairstyle3])
+    end
+    
+    #기타특징
+    if params[:feature] != ""
+      @idols = @idols.where('feature = ? OR feature2 = ? OR feature3 = ?', params[:feature], params[:feature], params[:feature])
+    end
+    if params[:feature2] != ""
+      @idols = @idols.where('feature = ? OR feature2 = ? OR feature3 = ?', params[:feature2], params[:feature2], params[:feature2])
+    end
+    if params[:feature3] != ""
+      @idols = @idols.where('feature = ? OR feature2 = ? OR feature3 = ?', params[:feature3], params[:feature3], params[:feature3])
+    end
+    
+    #소속사2
+    def production_filter(rawData, targetcolumns, keyArray)
+      
+      @all_key_array = []
+      for @j_prod in targetcolumns
+        @all_key_array = @all_key_array + Idol.select(@j_prod.to_sym).distinct.pluck(@j_prod.to_sym)
+      end
+      @all_key_array = @all_key_array.uniq
+      @all_key_array.select! {|v| v != "0"}
+      @notKeyArray = @all_key_array
+      if keyArray
+        @notKeyArray = @notKeyArray - keyArray
+      end
+      for @i_prod in @notKeyArray
+        
+          rawData = rawData.where.not('productionorunit = ? OR productionorunit2 = ?', @i_prod, @i_prod)
+        
+      end
+      return rawData
+    end
+    @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
+
   end
 end
 

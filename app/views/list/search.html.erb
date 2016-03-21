@@ -51,13 +51,13 @@
 </fieldset>
 
 -->
-<div class="box-outter">
+<div class="box-outter box-outter-search">
 <div class="search-wrapper">
 	
 	<h1><strong>당신의 아이돌을 검색하시오</strong></h1>
 
-	<%= form_tag({controller: :list, action: :result},{id: 'search_form', class: 'search_table'}) do%>
-		<table border="1" cellspacing="0" cellpadding="0" class="profile_table table table_click">
+	<%= form_tag({controller: :list, action: :result}, {class: 'search_table'}) do%>
+		<table border="1" cellspacing="0" cellpadding="0" id="search_form" class="profile_table table table_click">
 			<thead>
 				<th colspan="4" class="cell_head kurenai">》PROFILE</th>
 			</thead>
@@ -80,8 +80,8 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<input type="checkbox" name="ageUnknown" value="0" checked="checked" class="check_box">
-						<span class=check_box_desc>연령불명 포함</span>
+						<input type="checkbox" name="ageUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<span class="check_box_desc check_box_unknown">연령불명 포함</span>
 					</td>
 				</tr>
 				<tr class='select_field'>
@@ -103,8 +103,8 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<input type="checkbox" name="heightUnknown" value="0" checked="checked" class="check_box">
-						<span class=check_box_desc>신장불명 포함</span>
+						<input type="checkbox" name="heightUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<span class="check_box_desc check_box_unknown">신장불명 포함</span>
 					</td>
 				</tr>
 				<tr class='select_field'>
@@ -121,8 +121,8 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<input type="checkbox" name="weightUnknown" value="0" checked="checked" class="check_box">
-						<span class=check_box_desc>체중불명 포함</span>
+						<input type="checkbox" name="weightUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<span class="check_box_desc check_box_unknown">체중불명 포함</span>
 					</td>
 				</tr>
 				<tr class='select_field'>
@@ -174,11 +174,11 @@
 				<tr>
 					<td colspan="1" scope="row" class="cell_title cell_title_half"></td>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<input type="checkbox" name="bwhUnknown" value="0" checked="checked" class="check_box">
-						<span class=check_box_desc>사이즈불명 포함</span>
+						<input type="checkbox" name="bwhUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<span class="check_box_desc check_box_unknown">사이즈불명 포함</span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="productionorunit_cell_1">
 					<td colspan="2" scope="row" class="cell_title cell_title_right">소속</td>
 					<td colspan="2" class="cell_content">
 						<div class='select_field'>
@@ -189,6 +189,107 @@
 			
 			</tbody>
 		</table>
+		
+		<!--추가 검색-->
+		<table border="1" cellspacing="0" cellpadding="0" id="search_form2" class="profile_table table table_click">
+			<thead>
+				<th colspan="8" class="cell_head kurenai">추가 검색조건</th>
+			</thead>
+			<tbody>
+				<!--
+				<tr>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">성별</td>
+					<td colspan="6" class="cell_content">
+						<div class='select_field'>
+							<%=select_tag 'gender', options_for_select({'여성'=>'F','남성'=>'M'}), {id: 'form_gender', class: 'select_box select_box_full_length', include_blank: '전체'}%>	
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" rowspan="2" scope="row" class="cell_title cell_title_right">연령</td>
+					<td colspan="6" class="cell_content">
+						<div class='select_field'>
+							<%=select_tag 'age', options_for_select({'6-8세'=>'6-8','9-11세'=>'9-11','12-14세'=>'12-14','15-17세'=>'15-17','18-19세'=>'18-19','20-24세'=>'20-24','25-29세'=>'25-29','30-34세'=>'30-34','35-40세'=>'35-40','그 외'=>'5-41'}), {id: 'form_age', class: 'select_box select_box_full_length', include_blank: '전체'}%>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" class="cell_content cell_check_box cbox">
+						<input type="checkbox" name="ageUnknown" value="0" checked="checked" class="check_box">
+						<span class=check_box_desc>연령불명 포함</span>
+					</td>
+				</tr>
+				<tr class='select_field'>
+					<td colspan="2" rowspan="1" scope="row" class="cell_title cell_title_right">체중</td>	
+					<td colspan="3" class="cell_content cell_content_half">
+						<%=select_tag 'weightMin', options_for_select(@weightMinRangeArray, @weightMinRangeArray.values.first.to_i), {id: 'form_weightMin', class: 'select_min select_box select_box_half_length'}%>
+							<span class="unit">kg 이상</span>
+					</td>
+					<td colspan="3" class="cell_content cell_content_half">
+						<%=select_tag 'weightMax', options_for_select(@weightMaxRangeArray, @weightMaxRangeArray.values.last.to_i), {id: 'form_weightMax', class: 'select_max select_box select_box_half_length'}%>
+							<span class="unit">kg 미만</span>
+					
+					</td>
+				</tr>
+				-->
+				<tr class='select_field'>
+					<td colspan="2" rowspan="1" scope="row" class="cell_title cell_title_right">헤어스타일</td>	
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">색상</span></br>
+						<%=select_tag 'hairstyle', options_for_select(@hairstyle), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">스타일</span></br>
+						<%=select_tag 'hairstyle2', options_for_select(@hairstyle2), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">머릿결</span></br>
+						<%=select_tag 'hairstyle3', options_for_select(@hairstyle3), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+				</tr>
+				<tr class='select_field'>
+					<td colspan="2" rowspan="1" scope="row" class="cell_title cell_title_right">기타</td>	
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">특징1</span></br>
+						<%=select_tag 'feature', options_for_select(@feature), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">특징2</span></br>
+						<%=select_tag 'feature2', options_for_select(@feature), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+					<td colspan="2" class="cell_content cell_content_third">
+						<span class="unit">특징3</span></br>
+						<%=select_tag 'feature3', options_for_select(@feature), {class: 'select_box select_box_third_length', include_blank: '선택 안함'}%>
+							
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" scope="row" class="cell_title cell_title_right">소속</td>
+					<td colspan="6" class="cell_content">
+						<div class='select_field'>
+							<% @mediafromP_1.each do |key, array| %>
+								<div class="check_box_multisel_group_box">
+									<input type="checkbox" name="productionorunit_multisel_group" value="0" checked="checked" class="check_box check_box_multisel_group">
+									<span class=""><%= key.to_s %></span>
+									<div class="check_box_multisel_indiv_box">
+										<% array.each do |val| %>
+											<input type="checkbox" name="productionorunit_multisel[]" value="<%= val.to_s %>" checked="checked" class="check_box check_box_multisel_indiv"/>
+												<span class=""><%= val.to_s %></span></br>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+			</body>
+		</table>
+				
 	
 	<button type="submit" class="search-btn">검색</button>
 	

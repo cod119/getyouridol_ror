@@ -7,8 +7,6 @@ class CreateIdols < ActiveRecord::Migration
       t.string :cv
       t.string :gender
       t.integer :age
-      t.string :productionorunit
-      t.string :productionorunit2
       t.integer :height
       t.integer :weight
       t.integer :b
@@ -21,7 +19,16 @@ class CreateIdols < ActiveRecord::Migration
       t.string :bloodtype
       t.string :hairstyle
       t.string :hairstyle2
+      t.string :hairstyle3
+      t.string :feature
+      t.string :feature2
+      t.string :feature3
       t.string :areafrom
+      t.string :productionorunit
+      t.string :productionorunit2
+      t.string :mediafromP
+      t.string :mediafromP_1
+      t.string :mediafromP_2
       t.string :mediafrom
       t.string :mediafrom2
 

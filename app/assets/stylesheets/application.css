@@ -219,7 +219,7 @@ a {
 .box-outter {
 	display: block;
 	margin: auto auto;
-	width: 90%;
+	width: 80%;
 	vertical-align: middle;
 }
 .card_picture {
@@ -250,8 +250,12 @@ a {
 	margin-top: 0.2rem;
 }
 	/************/
-
-
+#result_nothing {
+	display: none;
+}
+#result_nothing img {
+	width: 70%;
+}
 /*index.html*/
 
 .navbar-wrapper {
@@ -375,7 +379,7 @@ a {
 
 
 
-/*serch.html*/
+/*search.html*/
 	/*search-wrapper에 대한 설정은 home-wrapper와 함께*/
 .select_box {
 	height: 2rem;
@@ -404,7 +408,8 @@ a {
 }
 
 .search-btn, .select_box {
-	font-family: 'Jeju Gothic', 'Nanum Gothic', 'Nanum', 'sans-serif';
+	font-family: 'Nanum Gothic', 'Nanum', 'sans-serif';
+	font-weight: bold;
 }
 input[type="checkbox"] {
 	width: 1.2rem;
@@ -412,15 +417,28 @@ input[type="checkbox"] {
 	background-color: white;
 }
 
-.check_box_desc {
+.check_box_desc.check_box_unknown {
 	display: inline-block;
 	vertical-align: middle;
 	float: right;
 	margin: 0 0.2rem;
 	font-weight: normal;
 }
-.cell_check_box .check_box {
+.cell_check_box .check_box.check_box_unknown {
 	float: right;
+}
+#search_form2 tbody {
+	display: none;
+}
+.check_box_multisel_group_box {
+	text-align: left;
+}
+.check_box_multisel_indiv_box {
+	text-align: left;
+	padding: 0 2rem;
+}
+.select_box.select_box_third_length {
+	width: 100%;
 }
 
 
@@ -516,7 +534,7 @@ italic {
  	}
  	/*아래 두 클래스 .card_picture_table과 .card_picture_table_head
  	는 현재 상단에서 데스크탑의 경우, 전자는 relative, 후자는 absolute로 겹치게
- 	해놓았으나, 모바일에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
+ 	해놓았으나, 모바일(세로모드)에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
  	코드*/
  	.card_picture_table {
 		position: static;
@@ -533,11 +551,9 @@ italic {
 @media screen and (max-device-width: 640px) and (orientation: landscape){
   /* some CSS here */
  	html {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
-	 
 
-	
 
 }
 
@@ -545,7 +561,10 @@ italic {
 @media screen and (max-device-width: 640px){
   /* some CSS here */
 	html {
+		font-size: 1rem;
 	}
+	
+	
 }
 
 /* #### iPhone 4+ Portrait or Landscape #### */
@@ -584,20 +603,68 @@ italic {
 }
 
 /* #### nexus6 iphone6 Portrait or Landscape #### */
+/*대부분의 모바일 랜드스캐이프 모드에 적용, 노트 시리즈도 포함*/
 @media screen and (min-device-width: 640px) and (max-device-width: 768px){
   /* some CSS here */
 	html {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
+	
+	/*아래가 새로 추가한 부분들, 한 행에 두개 뜨도록*/
+		/*아래 padding 좌우 합과, box-outter padding값, 그리고 동 width값을 더했을때 100%가 되도록 주의.*/
+	.result-wrapper, .search-wrapper, .home-wrapper {
+		padding: 4rem 0.3%;
+	}
+	.box-outter {
+		width: 49.4%;
+		height: 24rem;
+		float: left;
+		padding: 0 0.3%;
+	
+	}
+	.box-outter.box-outter-search {
+		float: none;
+		width: 50%;
+	}
+	.narrow_table {
+ 		display: block;
+ 	}
+ 	.wide_table {
+ 		display: none;
+ 	}
 
 }
 
 /* #### Tablets Portrait or Landscape #### */
+/*패드급 랜드스캐이프 모드에 적용*/
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
   /* some CSS here */
 	html {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
+	
+	/*아래가 새로 추가한 부분들, 한 행에 두개 뜨도록*/
+		/*아래 padding 좌우 합과, box-outter padding값, 그리고 동 width값을 더했을때 100%가 되도록 주의.*/
+	.result-wrapper, .search-wrapper, .home-wrapper {
+		padding: 4rem 0.3%;
+	}
+	.box-outter {
+		width: 49.4%;
+		height: 24rem;
+		float: left;
+		padding: 0 0.3%;
+	
+	}
+	.box-outter.box-outter-search {
+		float: none;
+		width: 50%;
+	}
+	.narrow_table {
+ 		display: block;
+ 	}
+ 	.wide_table {
+ 		display: none;
+ 	}
  
 
 }
@@ -609,7 +676,7 @@ italic {
   /*지우고, 현재 모바일 중심으로 설계되어 있으니, 데스크탑 중심으로 재설계
   반대로 설정. 즉 wide narrow 기본 display 서로 바꾸기 */
 	html {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
  
 
@@ -643,17 +710,41 @@ italic {
 @media screen and (min-width: 1024px){
   /* some CSS here */
  	html {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
- 
+	
+	/*아래가 새로 추가한 부분들, 한 행에 두개 뜨도록*/
+		/*아래 padding 좌우 합과, box-outter padding값, 그리고 동 width값을 더했을때 100%가 되도록 주의.*/
+	.result-wrapper, .search-wrapper, .home-wrapper {
+		padding: 4rem 0.3%;
+	}
+	.box-outter {
+		width: 32.5%;
+		height: 24rem;
+		float: left;
+		padding: 0 0.3%;
+	
+	}
+	.box-outter.box-outter-search {
+		float: none;
+		width: 50%;
+	}
+	.narrow_table {
+ 		display: block;
+ 	}
+ 	.wide_table {
+ 		display: none;
+ 	}
+ 	/*
  	.narrow_table {
  		display: none;
  	}
  	.wide_table {
  		display: block;
  	}
+ 	*/
  	.box-outter {
- 		width: 810px;
+ 		/*width: 810px;*/
  	}
  	/*
 	.narrow_table {

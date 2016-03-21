@@ -14,7 +14,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<img src='assets/card/<%=t.nameen.downcase%>.jpg' class='card_picture table_click' onerror="this.src='/assets/cardpicturenotfound.jpg'">
+						<img src='assets/cardpicture/<%=t.nameen.downcase%>.jpg' class='card_picture table_click' onerror="this.src='/assets/cardpicturenotfound.jpg'">
 					</td>
 					<!--
 					<td rowspan="1" class="cell_content picture_cell" style='background-image: url("/assets/Ganaha Hibiki.jpg")'></td>
@@ -37,7 +37,7 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="1" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
+						<td rowspan="6" colspan="2" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/cardpicture/<%=t.nameen.downcase%>.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
 								
 							
 						
@@ -61,7 +61,7 @@
 							} else {
 								document.write(<%=t.age%>);
 							}
-						</script> <span class="unit">세</span><span class="unit">)</span></td>
+						</script> <span class="unit">세</span> <span class="unit">)</span></td>
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right word_narrow">신장/체중</td>
@@ -70,7 +70,7 @@
 								if (<%=t.height%> < 0) {
 									document.write("?");
 								} else {
-									document.write(<%=t.weight%>);
+									document.write(<%=t.height%>);
 								}
 							</script> <span class="unit">cm</span> / <script>
 								if (<%=t.weight%> < 0) {
@@ -84,7 +84,25 @@
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right">사이즈</td>
 						<td colspan="3" class="cell_content">
-							<span class="unit">B</span> <%=t.b%> <span class="unit">cm</span> / <span class="unit">W</span> <%=t.w%> <span class="unit">cm</span> / <span class="unit">H</span> <%=t.h%> <span class="unit">cm</span>
+							<span class="unit">B</span> <script>
+								if (<%=t.b%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.b%>);
+								}
+							</script> <span class="unit">cm</span> / <span class="unit">W</span> <script>
+								if (<%=t.w%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.w%>);
+								}
+							</script> <span class="unit">cm</span> / <span class="unit">H</span> <script>
+								if (<%=t.h%> < 0) {
+									document.write("?");
+								} else {
+									document.write(<%=t.h%>);
+								}
+							</script> <span class="unit">cm</span>
 						</td>
 					</tr>
 					<tr>
@@ -107,9 +125,9 @@
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right">매체</td>
-						<td colspan="3" class="cell_content word_narrow"><%=t.mediafrom%>
-							<% if t.mediafrom2 != "0" %>
-								</br><%=t.mediafrom2%>
+						<td colspan="3" class="cell_content word_narrow"><%=t.mediafromP%> <%=t.mediafromP_1%>
+							<% if t.mediafromP_2 != "0" %>
+								</br><%=t.mediafromP%> <%=t.mediafromP_2%>
 							<% end %>
 						</td>
 					</tr>
@@ -127,12 +145,11 @@
 					<tr>
 						<td rowspan="3" scope="row" class="cell_title cell_title_right">이름</td>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameko%></td>
-						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/<%=t.nameen.downcase%>1.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
+						<td rowspan="11" colspan="1" class="small_picture_cell picture_cell cell_content" style='background-image: url("/assets/cardpicture/<%=t.nameen.downcase%>.jpg"), url("/assets/smallpicturenotfound.jpg")'></td>
 								
-
 					</tr>
-						<td colspan="1" class="cell_content word_narrow jpn"><%=t.nameja%></td>
 					<tr>
+						<td colspan="3" class="cell_content word_narrow jpn"><%=t.nameja%></td>
 					</tr>
 					<tr>
 						<td colspan="3" class="cell_content word_narrow"><%=t.nameen%></td>
@@ -214,9 +231,9 @@
 					</tr>
 					<tr>
 						<td colspan="1" class="cell_title cell_title_right">매체</td>
-						<td colspan="3" class="cell_content word_narrow"><%=t.mediafrom%>
-							<% if t.mediafrom2 != "0" %>
-								</br><%=t.mediafrom2%>
+						<td colspan="3" class="cell_content word_narrow"><%=t.mediafromP%> <%=t.mediafromP_1%>
+							<% if t.mediafromP_2 != "0" %>
+								</br><%=t.mediafromP%> <%=t.mediafromP_2%>
 							<% end %>
 						</td>
 					</tr>
