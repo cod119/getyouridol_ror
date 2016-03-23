@@ -54,7 +54,10 @@
 <div class="box-outter box-outter-search">
 <div class="search-wrapper">
 	
-	<h1><strong>당신의 아이돌을 검색하시오</strong></h1>
+	<span class="jejugothic italic absolute_font_size">프로필을 완성한 후 '검색'을 누르세요</span>
+	<span class="jejugothic italic absolute_font_size">'상세검색' 버튼을 누르면 상세입력이 가능합니다</span>
+	
+	<hr></hr>
 
 	<%= form_tag({controller: :list, action: :result}, {class: 'search_table'}) do%>
 		<table border="1" cellspacing="0" cellpadding="0" id="search_form" class="profile_table table table_click">
@@ -80,7 +83,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<label><input type="checkbox" name="ageUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<label><input type="checkbox" name="ageUnknown" value="1" checked="checked" class="check_box check_box_unknown">
 						<span class="check_box_desc check_box_unknown">연령불명 포함</span></label>
 					</td>
 				</tr>
@@ -103,7 +106,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<label><input type="checkbox" name="heightUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<label><input type="checkbox" name="heightUnknown" value="1" checked="checked" class="check_box check_box_unknown">
 						<span class="check_box_desc check_box_unknown">신장불명 포함</span></label>
 					</td>
 				</tr>
@@ -121,7 +124,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<label><input type="checkbox" name="weightUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<label><input type="checkbox" name="weightUnknown" value="1" checked="checked" class="check_box check_box_unknown">
 						<span class="check_box_desc check_box_unknown">체중불명 포함</span></label>
 					</td>
 				</tr>
@@ -174,7 +177,7 @@
 				<tr>
 					<td colspan="1" scope="row" class="cell_title cell_title_half"></td>
 					<td colspan="2" class="cell_content cell_check_box cbox">
-						<label><input type="checkbox" name="bwhUnknown" value="0" checked="checked" class="check_box check_box_unknown">
+						<label><input type="checkbox" name="bwhUnknown" value="1" checked="checked" class="check_box check_box_unknown">
 						<span class="check_box_desc check_box_unknown">사이즈불명 포함</span></label>
 					</td>
 				</tr>
@@ -289,7 +292,8 @@
 				</tr>
 			</body>
 		</table>
-				
+	
+	<hr></hr>			
 	
 	<button type="submit" class="search-btn">검색</button>
 	

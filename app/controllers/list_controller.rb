@@ -57,7 +57,7 @@ class ListController < ApplicationController
     #연령
     @ageMMarray = params[:age].split('-')
     @ageUnknown = params[:ageUnknown].to_i
-    if !@ageUnknown
+    if !@ageUnknown != 1
       @idols = @idols.where('age >= 0')
     end
     if params[:age] != "" and params[:age] != '5-41'
@@ -69,21 +69,21 @@ class ListController < ApplicationController
     
     #신장
     @heightUnknown = params[:heightUnknown].to_i
-    if !@heightUnknown
+    if !@heightUnknown != 1
       @idols = @idols.where('height >= 0')
     end
     @idols = @idols.where('height >= ? AND height < ? OR height < 0', params[:heightMin], params[:heightMax])
     
     #체중
     @weightUnknown = params[:weightUnknown].to_i
-    if !@weightUnknown
+    if @weightUnknown != 1
       @idols = @idols.where('weight >= 0')
     end
     @idols = @idols.where('weight >= ? AND weight < ? OR weight < 0', params[:weightMin], params[:weightMax])
     
     #b
     @bwhUnknown = params[:bwhUnknown].to_i
-    if !@bwhUnknown
+    if !@bwhUnknown != 1
       @idols = @idols.where('b >= 0 AND w >= 0 AND h >= 0')
     end
     @idols = @idols.where('b >= ? AND b < ? OR b < 0', params[:bMin], params[:bMax])
@@ -95,9 +95,10 @@ class ListController < ApplicationController
     @idols = @idols.where('h >= ? AND h < ? OR h < 0', params[:hMin], params[:hMax])
     
     #소속사
+      #뮤즈는 따옴표(')를 쓰기 때문에 where 조건문에서 조건을 쌍따옴표로 감싸거나, params를 .to_s해야.
     if params[:productionorunit] != ""
       #@idols = Idol.where(productionorunit: params[:productionorunit])
-      @idols = @idols.where('productionorunit = ? OR productionorunit2 = ?', params[:productionorunit], params[:productionorunit])
+      @idols = @idols.where("productionorunit = ? OR productionorunit2 = ?", params[:productionorunit], params[:productionorunit])
     end
     
     #헤어스타일
@@ -123,6 +124,7 @@ class ListController < ApplicationController
     end
     
     #소속사2
+      #뮤즈는 따옴표(')를 쓰기 때문에 where 조건문에서 조건을 쌍따옴표로 감싸거나, params를 .to_s해야.
     def production_filter(rawData, targetcolumns, keyArray)
       
       @all_key_array = []
@@ -137,7 +139,7 @@ class ListController < ApplicationController
       end
       for @i_prod in @notKeyArray
         
-          rawData = rawData.where.not('productionorunit = ? OR productionorunit2 = ?', @i_prod, @i_prod)
+          rawData = rawData.where.not("productionorunit = ? OR productionorunit2 = ?", @i_prod, @i_prod)
         
       end
       return rawData
@@ -145,6 +147,11 @@ class ListController < ApplicationController
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
   end
+  
+  def about
+    
+  end
+  
 end
 
 #현재 search버튼을 누를 경우에, list/result로 접근하면  list controller result action으로 리디렉팅하고, 해당 액션은 변수 계산후 그것을 search.html.erb에 뿌리는 방식으로 구동

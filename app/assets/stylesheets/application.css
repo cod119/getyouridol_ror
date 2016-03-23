@@ -83,16 +83,12 @@ html {
 	line-height: normal;
 }
 
-body {
+html, body {
     font-family: 'Nanum Gothic', 'sans-serif';
 	width:100%;
 	height:100%;
 	padding: 0;
     margin: 0;
-}
-
-.jpn {
-	font-family: 'Noto Sans JP', 'Nanum Ghothic';
 }
 
 a {
@@ -105,35 +101,58 @@ a {
 /*result.html*/
 
 	/*.result-wrapper에 대한 설정은 .home-wrapper에 함께 되어 있음*/
+
+.box-outter {
+	display: block;
+	margin: auto auto;
+	width: 80%;
+	vertical-align: middle;
+}
+	/*background-size: cover는 그림의 너비, 높이 중 짧은 것의 길이를 cell의 길이와 같게 한다.
+	그리고 background-position: center center;로 백그라운드의 위치를 가운데로 맞추면 끝*/
+.idol_picture {
+	display: inline-block;
+	margin-top: 0.5rem;
+	width: 60%;
+	height: 5rem;
+	background-position: center center;
+	background-size: cover;
+	border: 0.5rem solid #cc3d3d;
+	border-radius: 50%;
+	
+}
+
+.idol_picture_title {
+	font-size: initial;
+	font-size: 1.3rem;
+	margin: 1rem 0 0.5rem 0;
+	font-weight: bold;
+}
+	
 .table {
 	margin: auto;
 	width: 100%;
+	/*
 	border-collapse: separate;
     border-spacing: 0.1rem;
-    
+    */
 }
-	/*위의 .table에서 border-collapse: separate;를 함으로써,
-	.card_picture_table_haed의 크기가 어긋나는 것을 방지하기 위함*/
-.card_picture_table {
-	border-collapse: collapse;
+
+.profile_table {
+	margin: auto;
+	width: 100%;
+	border-collapse: separate;
+    border-spacing: 0.2rem;
+    font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
 }
-	/**/
-	
-.cell_head {
-	text-align: left;
-	/*line-height: 1.9rem;*/
-	color: white;
-	background-color: #F06161;
-	padding: 0 0.5rem;
-	height: 1.9rem;
-	
-	
+.profile_table td {
+	border-radius: 0.3rem;
 }
-.profile_table .cell_head {
-	line-height: 1.9rem;
+.profile_table .unit {
+	font-size: 0.3rem;
 }
-.cell_head div {
-	display: inline-block;
+.profile_table .cell_content {
+	font-weight: bold;
 }
 
 .table, .cell_title, .cell_content {
@@ -143,29 +162,20 @@ a {
 	background-color: white;
 }
 
-
-/*태이블 가장자리 둥글게*/
-.cell_head, .cell_title, .cell_content {
-	border-radius: 0.1rem;
+.cell_head {
+	text-align: left;
+	/*line-height: 1.9rem;*/
+	color: white;
+	background-color: #F06161;
+	padding: 0 0.5rem;
+	height: 1.9rem;
 }
-.card_picture {
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-left-radius: 0.1rem;
-	border-bottom-right-radius: 0.1rem;
-}
-
-.card_picture_table_head {
-	border-top-left-radius: 0.1rem;
-	border-top-right-radius: 0.1rem;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
+.cell_head div {
+	display: inline-block;
 }
 
-/*   ******   */
 .cell_title {
 	background-color: #FFF1F1; 
-	
 }
 .cell_title_right {
 	width: 18%;
@@ -175,9 +185,45 @@ a {
 	 narrow-table 용*/
 .cell_content_middle {
 	width: 45%;
+}
 	/**************/
 
+	/*태이블 가장자리 둥글게*/
+.cell_head, .cell_title, .cell_content {
+	border-radius: 0.1rem;
 }
+	/********/
+
+.cell_content {
+	font-weight: bold;
+}
+ /*search.html용 unit 설정*/
+.cell_content .unit {
+	font-weight: normal;
+	font-size: 0.7rem;
+}
+.nowloading {
+	background: url('/assets/nowloading.gif') center center no-repeat white;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 90000;
+	
+}
+
+#result_nothing {
+	display: none;
+}
+#result_nothing img {
+	width: 70%;
+}
+
+
+
+/***********wide_table 전용(폐기 예정)**(이하)************/
+
 	/*가로모드와 데스크탑 모드를 위한 .wide_table의 .cell_title 폭 조절*/
 .wide_table .cell_title {
 	width: 12%;
@@ -206,66 +252,23 @@ a {
 	background-position: center center;
 }
 	/****/
+/**************************(이상)****************************/
 
 
-.cell_content {
-	font-weight: bold;
-}
-.cell_content .unit {
-	font-weight: normal;
-	font-size: 0.7rem;
-}
 
-.box-outter {
-	display: block;
-	margin: auto auto;
-	width: 80%;
-	vertical-align: middle;
-}
-.card_picture {
-	width: 100%;
-	vertical-align: middle;
-}
-	/*card_picture_table의 head요소가 같은 sibling인 이미지 상단에 위치하도록
-	absolute속성을 줌. table에는 relative, table_head는 ablolute.
-	------이하 미작동(연구 필요)-----head는 inline 요소이므로, 그 내부의 span이 수직 가운데 정렬하기 위해서는
-	span도 마찬가지로 inline 요소여야 한다. 내부 inline 요소에 vertical-align:middle; 설정*/
-.card_picture_table {
-	position: relative;
-}
-.card_picture_table_head {
-	position: absolute;
-	width: 100%;
-	/*height: 1.9rem;*/
-	padding: 0;
-	/*아래의 line-height는 cell_head의 line-head값을 덮어씌우기 위한 것.*/
-	/*line-height: 1.7rem;*/
-}
-.card_picture_table_head_string {
-	font-size: 1.1rem;
-	display: inline-block;
-	vertical-align: middle;
-	margin: 0 0.5rem;
-	/*margin-top은, .card_picture_table_head_string의 수직 위치를 맞추기 위함. 차후 필요시 삭제*/
-	margin-top: 0.2rem;
-}
-	/************/
-#result_nothing {
-	display: none;
-}
-#result_nothing img {
-	width: 70%;
-}
+
+
+
 /*index.html*/
 
 .navbar-wrapper {
 	position: fixed;
 	top:0;
 	left:0;
-	z-index: 1;
+	z-index: 90009;
 	width: 100%;
 	vertical-align: middle;
-	/*box-shadow: 0px 2px 2px gray;*/
+	box-shadow: 0px 2px 2px gray;
 	overflow: hidden;
 }
 
@@ -322,7 +325,7 @@ a {
     border-left: 1px solid #ccc;
     border-top-left-radius: 5px;
     opacity: 0.8;
-    z-index: 90005;
+    z-index: 90009;
     line-height: 2.7rem;
 }
 .nav-control-btn {
@@ -348,19 +351,15 @@ a {
 }
 
 /*home.html*/
-.home-wrapper, .result-wrapper, .search-wrapper {
+.home-wrapper, .result-wrapper, .search-wrapper, .about-wrapper {
 	text-align: center;
 	overflow: hidden;
 	padding: 5rem 3rem;
 	line-height: 1.5em;
 }
-.home-wrapper .hello .h1 {
-	font-style: italic;
-	font-weight: bold;
-	font-size: 1.5rem;
-}
-.home-wrapper .hello .h3 {
-	font-size: 0.8rem;
+.home-wrapper .hello {
+	line-height: 2rem;
+	margin-top: 4rem;
 }
 .search-btn {
 	font-size: 1.5rem;
@@ -371,12 +370,18 @@ a {
 .home-wrapper .search-btn {
 	margin: 1.6rem;
 	box-shadow: 0 2px grey;
+	width: 10rem;
 }
 .search-btn:hover {
 	background-color: #CC3D3D;
 	color: white;
 }
 
+/*about.html*/
+.about-wrapper .hello {
+	line-height: 2rem;
+	margin-top: 4rem;
+}
 
 
 /*search.html*/
@@ -455,13 +460,6 @@ input[type="checkbox"] {
 
 
 
-
-/*아래의 태그는 반응형 페이지를 위한 태그. 낮은 해상도용 태이블을 평상시에 감추는 역할.*/
-/*html에서 diplay:none을 설정하면, 우선순위에 따라 css에서 조정한 내용은 후순위로 밀리게 되어 작동안함. 주의*/
-.narrow_table {
-	display: none;
-}
-
 /**********도구모음****************/
 .danpoong-gra {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cc3d3d+4,8f0222+88,6d0019+100 */
@@ -486,21 +484,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', end
 	/* 아래와 같은색 background: rgb(211,43,63);*/
 	background-color: #D32B3F;
 }
-bold {
+.jejugothic {
+	font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
+}
+.notosansjp {
+	font-family: 'Noto Sans JP', 'Nanum Ghothic';
+}
+.fontinitial {
+	font-family: initial;
+}
+.bold {
 	font-weight: bold;
 }
-italic {
+.italic {
 	font-style: italic;
 }
 /*자간을 줄이기 위한 클레스*/
 .word_narrow {
 	letter-spacing: -0.05rem;
 }
+.zero_p_eight_rem {
+	font-size: 0.8rem;
+}
+.one_rem {
+	font-size: 1em;
+}
 .one_p_two_rem {
 	font-size: 1.2rem;
 }
 .one_p_five_rem {
 	font-size: 1.5rem;
+}
+.opacityzero {
+	opacity: 0;
+}
+.opacityone {
+	opacity: 1;
+}
+.width_thirty_percent {
+	width: 30%;
+}
+.absolute_font_size {
+	/*반응형 설정의 폰트 사이즈 변경(html 태그에 대한)에 영향을 받지 않도록 inline-block으로 설정
+	예컨대, html에 대해 font-size: 2.5rem을 해도, 함께 2.5배 되는 것이 아니라, 본래 크기를 유지*/
+	display: inline-block;
 }
 /**********************************/
 
@@ -538,22 +565,17 @@ italic {
 	.box-outter {
 		width: 100%;
 	}
-	.narrow_table {
- 		display: block;
- 	}
- 	.wide_table {
- 		display: none;
- 	}
+
  	/*아래 두 클래스 .card_picture_table과 .card_picture_table_head
  	는 현재 상단에서 데스크탑의 경우, 전자는 relative, 후자는 absolute로 겹치게
  	해놓았으나, 모바일(세로모드)에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
  	코드*/
- 	.card_picture_table {
+ 	/*.card_picture_table {
 		position: static;
 	}
 	.card_picture_table_head {
 		position: static;
-	}
+	}*/
 	/******/
  	
 	
@@ -569,7 +591,7 @@ italic {
 
 }
 
-/* #### Mobile Phones Portrait or Landscape #### */
+/* #### Mobile Phones Portrait or Landscape (아이폰5)#### */
 @media screen and (max-device-width: 640px){
   /* some CSS here */
 	html {
@@ -593,22 +615,17 @@ italic {
 	.box-outter {
 		width: 100%;
 	}
-	.narrow_table {
- 		display: block;
- 	}
- 	.wide_table {
- 		display: none;
- 	}
+
  	/*아래 두 클래스 .card_picture_table과 .card_picture_table_head
  	는 현재 상단에서 데스크탑의 경우, 전자는 relative, 후자는 absolute로 겹치게
  	해놓았으나, 모바일에서는 사진의 상단이 겹치는 것이 애매하여 이를 삭제하는
  	코드*/
- 	.card_picture_table {
+ 	/*.card_picture_table {
 		position: static;
 	}
 	.card_picture_table_head {
 		position: static;
-	}
+	}*/
 	/******/
 	
  
@@ -625,26 +642,20 @@ italic {
 	/*아래가 새로 추가한 부분들, 한 행에 두개 뜨도록*/
 		/*아래 padding 좌우 합과, box-outter padding값, 그리고 동 width값을 더했을때 100%가 되도록 주의.*/
 	.result-wrapper, .search-wrapper, .home-wrapper {
-		padding: 4rem 0.3%;
+		padding: 4rem 5%;
 	}
 	.box-outter {
-		width: 49.4%;
-		height: 24rem;
+		width: 45%;
+		height: 34rem;
 		float: left;
-		padding: 0 0.3%;
+		padding: 0 2.5%;
 	
 	}
 	.box-outter.box-outter-search {
 		float: none;
 		width: 50%;
 	}
-	.narrow_table {
- 		display: block;
- 	}
- 	.wide_table {
- 		display: none;
- 	}
-
+	
 }
 
 /* #### Tablets Portrait or Landscape #### */
@@ -662,7 +673,7 @@ italic {
 	}
 	.box-outter {
 		width: 49.4%;
-		height: 24rem;
+		height: 34rem;
 		float: left;
 		padding: 0 0.3%;
 	
@@ -671,13 +682,6 @@ italic {
 		float: none;
 		width: 50%;
 	}
-	.narrow_table {
- 		display: block;
- 	}
- 	.wide_table {
- 		display: none;
- 	}
- 
 
 }
 
@@ -732,7 +736,7 @@ italic {
 	}
 	.box-outter {
 		width: 32.5%;
-		height: 24rem;
+		height: 33rem;
 		float: left;
 		padding: 0 0.3%;
 	
@@ -741,44 +745,5 @@ italic {
 		float: none;
 		width: 50%;
 	}
-	.narrow_table {
- 		display: block;
- 	}
- 	.wide_table {
- 		display: none;
- 	}
- 	/*
- 	.narrow_table {
- 		display: none;
- 	}
- 	.wide_table {
- 		display: block;
- 	}
- 	*/
- 	.box-outter {
- 		/*width: 810px;*/
- 	}
- 	/*
-	.narrow_table {
-		display: none;
-	}
-	.wide_table {
-		display: block;
-	}
-	.total {
-		width: 70%;
-		float:left
-		
-	}
-	#wide_small_picture {
-		display: block;
-		width: 30%;
-		float: right;
-	}
-	.box-inner:after {
-  		display: block;
-  		content: '';
-  		clear: both;
-	}
-	*/
+
 }

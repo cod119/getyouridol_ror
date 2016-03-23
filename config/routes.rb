@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'list#home'
   get '/' => 'list#home'
   get '/search' => 'list#search'
+  get '/about' => 'list#about'
   post '/result' => 'list#result'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
