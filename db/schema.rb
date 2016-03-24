@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20160311153323) do
     t.string   "areafrom"
     t.string   "productionorunit"
     t.string   "productionorunit2"
-    t.string   "mediafromP"
-    t.string   "mediafromP_1"
-    t.string   "mediafromP_2"
+    t.string   "mediafromp"
+    t.string   "mediafromp_1"
+    t.string   "mediafromp_2"
     t.string   "mediafrom"
     t.string   "mediafrom2"
     t.datetime "created_at",        null: false

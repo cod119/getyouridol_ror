@@ -26,9 +26,9 @@ class CreateIdols < ActiveRecord::Migration
       t.string :areafrom
       t.string :productionorunit
       t.string :productionorunit2
-      t.string :mediafromP
-      t.string :mediafromP_1
-      t.string :mediafromP_2
+      t.string :mediafromp
+      t.string :mediafromp_1
+      t.string :mediafromp_2
       t.string :mediafrom
       t.string :mediafrom2
 

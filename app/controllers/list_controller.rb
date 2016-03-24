@@ -32,13 +32,13 @@ class ListController < ApplicationController
      #feature
      @feature = (nonRangeArray('feature', 0) + nonRangeArray('feature2', 0) + nonRangeArray('feature3', 0)).uniq
      #소속사2
-     @mediafromP = Idol.select(:mediafromP).distinct.order(mediafromP: :asc).pluck(:mediafromP)
-     @mediafromP_1 = {}
-     @mediafromP.each do |v|
-       one = Idol.where('mediafromP = ?', v).select(:productionorunit).distinct.order(productionorunit: :asc).pluck(:productionorunit)
-       two = Idol.where('mediafromP = ?', v).select(:productionorunit2).distinct.order(productionorunit2: :asc).pluck(:productionorunit2)
+     @mediafromp = Idol.select(:mediafromp).distinct.order(mediafromp: :asc).pluck(:mediafromp)
+     @mediafromp_1 = {}
+     @mediafromp.each do |v|
+       one = Idol.where('mediafromp = ?', v).select(:productionorunit).distinct.order(productionorunit: :asc).pluck(:productionorunit)
+       two = Idol.where('mediafromp = ?', v).select(:productionorunit2).distinct.order(productionorunit2: :asc).pluck(:productionorunit2)
        total = (one + two).uniq
-       @mediafromP_1[v.to_sym] = total.select {|l| l != "0"}
+       @mediafromp_1[v.to_sym] = total.select {|l| l != "0"}
      end
      
   end
