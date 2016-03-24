@@ -7,8 +7,8 @@ class ListController < ApplicationController
   def search
      
      #postgreSQL에서는 order로 한글을 정렬할 수가 없어서 order('nameko collate "C" asc')로 대체
-     #@idols = Idol.all.order(nameko: :asc)
-     @idols = Idol.all.order('nameko collate "C" asc')
+     @idols = Idol.all.order(nameko: :asc)
+     #@idols = Idol.all.order('nameko collate "C" asc')
      #신장
      @heightMinRangeArray = rangeArray('height', 5, 0)
      @heightMaxRangeArray = rangeArray('height', 5, 1)
@@ -148,7 +148,7 @@ class ListController < ApplicationController
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
 
-    @idols = @idols.order('nameko collate "C" asc')
+    @idols = @idols.order('nameko collate "C"')
   end
   
   def about
