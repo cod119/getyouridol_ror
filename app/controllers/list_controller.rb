@@ -45,7 +45,7 @@ class ListController < ApplicationController
   
   def result
     
-    @idols = Idol.all.order(nameko: :asc).distinct
+    @idols = Idol.all.distinct
     
     #성별
     if params[:gender] != ""
@@ -147,7 +147,7 @@ class ListController < ApplicationController
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
 
-    @idols = @idols.order(nameko: :asc)
+    @idols = @idols.order('nameko collate "c" asc')
   end
   
   def about
