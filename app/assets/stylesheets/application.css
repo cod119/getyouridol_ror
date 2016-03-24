@@ -543,10 +543,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', end
 }
 	
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) and { ... }
+@media (max-width: 767px) {
+	
+}
  
 /* Landscape phones and down */
-@media (max-width: 480px) { ... }
+@media (max-width: 480px) {
+	
+}
 
 
 /********************/
