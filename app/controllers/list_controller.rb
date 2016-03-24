@@ -146,6 +146,8 @@ class ListController < ApplicationController
     end
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
+
+    @idols = @idols.order(nameko: :asc)
   end
   
   def about
