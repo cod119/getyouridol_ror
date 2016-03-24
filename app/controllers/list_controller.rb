@@ -6,8 +6,9 @@ class ListController < ApplicationController
   
   def search
      
-     @idols = Idol.all.order(nameko: :asc)
-     
+     #postgreSQL에서는 order로 한글을 정렬할 수가 없어서 order('nameko collate "C" asc')로 대체
+     #@idols = Idol.all.order(nameko: :asc)
+     @idols = Idol.all.order('nameko collate "C" asc')
      #신장
      @heightMinRangeArray = rangeArray('height', 5, 0)
      @heightMaxRangeArray = rangeArray('height', 5, 1)
@@ -139,7 +140,7 @@ class ListController < ApplicationController
       end
       for @i_prod in @notKeyArray
         
-          rawData = rawData.where.not("productionorunit = ? OR productionorunit2 = ?", @i_prod, @i_prod)
+          rawData = rawData.where.not("productionorunit = ? OR productionorunit2 = ?", @i_prod.to_s, @i_prod.to_s)
         
       end
       return rawData
@@ -147,7 +148,7 @@ class ListController < ApplicationController
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
 
-    @idols = @idols.order('nameko collate "c" asc')
+    @idols = @idols.order('nameko collate "C" asc')
   end
   
   def about
