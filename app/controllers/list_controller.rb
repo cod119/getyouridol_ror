@@ -148,7 +148,7 @@ class ListController < ApplicationController
     @idols = production_filter(@idols, ['productionorunit', 'productionorunit2'], params[:productionorunit_multisel])
 
 
-    @idols = @idols.order('nameko: collate "C"')
+    @idols = @idols
   end
   
   def about
