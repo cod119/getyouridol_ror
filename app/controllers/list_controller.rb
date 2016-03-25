@@ -28,8 +28,8 @@ class ListController < ApplicationController
      @productionorunit = Idol.select(:productionorunit).distinct.order(productionorunit: :asc)
      #hairstyle
      @hairstyle = nonRangeArray('hairstyle', 0)
-     @hairstyle2 = (nonRangeArray('hairstyle2', 0) + nonRangeArray('hairstyle3', 0)).uniq
-     @hairstyle3 = @hairstyle2
+     @hairstyle2 = nonRangeArray('hairstyle2', 0)
+     @hairstyle3 = nonRangeArray('hairstyle3', 0)
      #feature
      @feature = (nonRangeArray('feature', 0) + nonRangeArray('feature2', 0) + nonRangeArray('feature3', 0)).uniq
      #소속사2
@@ -107,10 +107,10 @@ class ListController < ApplicationController
       @idols = @idols.where('hairstyle = ?', params[:hairstyle])
     end
     if params[:hairstyle2] != ""
-      @idols = @idols.where('hairstyle2 = ? OR hairstyle3 = ?', params[:hairstyle2], params[:hairstyle2])
+      @idols = @idols.where('hairstyle2 = ?', params[:hairstyle2])
     end
     if params[:hairstyle3] != ""
-      @idols = @idols.where('hairstyle2 = ? OR hairstyle3 = ?', params[:hairstyle3], params[:hairstyle3])
+      @idols = @idols.where('hairstyle3 = ?', params[:hairstyle3])
     end
     
     #기타특징
