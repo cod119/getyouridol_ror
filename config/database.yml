@@ -25,6 +25,6 @@ production:
   #database: db/production.sqlite3
   adapter: postgresql
   host: localhost
-  #encoding: unicode
-  collation: C
+  encoding: utf8
+  lc-collate: C
   pool: 5
