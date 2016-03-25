@@ -219,6 +219,7 @@ $(document).ready(function() {
 				
 	})
 	
+	// 체크박스 옆의 label을 클릭해도 체크박스가 작동하도록 함.
 	$('.search-wrapper').on('click', '.check_box_desc', function(e) {
 		e.stopPropagation;
 		

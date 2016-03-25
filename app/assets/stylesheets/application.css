@@ -123,8 +123,10 @@ a {
 }
 
 .idol_picture_title {
-	font-size: initial;
-	font-size: 1.3rem;
+	/*font-size: initial;*/
+	display: inline-block;
+	width: 100%;
+	font-size: 1.5rem;
 	margin: 1rem 0 0.5rem 0;
 	font-weight: bold;
 }
@@ -152,7 +154,7 @@ a {
 	font-size: 0.3rem;
 }
 .profile_table .cell_content {
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .table, .cell_title, .cell_content {
@@ -195,7 +197,7 @@ a {
 	/********/
 
 .cell_content {
-	font-weight: bold;
+	font-weight: 500;
 }
  /*search.html용 unit 설정*/
 .cell_content .unit {
@@ -389,6 +391,7 @@ a {
 .select_box {
 	height: 2rem;
 	text-align: center;
+	border-radius: 0.3rem;
 }
 .select_box_full_length {
 	width: 100%;
@@ -400,7 +403,7 @@ a {
 	text-align: left;
 }
 .select_field .unit {
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 .select_box {
 	font-size: 1.2rem;
@@ -413,14 +416,14 @@ a {
 }
 
 .search-btn, .select_box {
-	font-family: 'Nanum Gothic', 'Nanum', 'sans-serif';
-	font-weight: bold;
+	font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
+	font-weight: 500;
 }
 
 .search-btn.search_additional {
 	margin-bottom: 1rem;
 	font-size: 1rem;
-	background-color: #f8f8f8;
+	background-color: #FFF1F1;
 }
 .search-btn.search_additional:hover {
 	background-color: #CC3D3D;
