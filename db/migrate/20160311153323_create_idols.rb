@@ -1,7 +1,7 @@
 class CreateIdols < ActiveRecord::Migration
   def change
     create_table :idols do |t|
-      t.string :nameko
+      t.string :nameko, :collation => "C" 
       t.string :nameja
       t.string :nameen
       t.string :cv
