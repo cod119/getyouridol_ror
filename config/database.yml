@@ -23,7 +23,7 @@ test:
 production:
   <<: *default
   #database: db/production.sqlite3
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   database: heroku_5113e669fa2ff67?reconnect=true
   host: us-cdbr-iron-east-03.cleardb.net
