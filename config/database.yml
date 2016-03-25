@@ -29,3 +29,5 @@ production:
   encoding: utf8
   collate: C
   pool: 5
+  username: postgresql
+  password: postgresql
