@@ -184,8 +184,20 @@
 				<tr id="productionorunit_cell_1">
 					<td colspan="2" scope="row" class="cell_title cell_title_right">소속</td>
 					<td colspan="2" class="cell_content">
+						<!--
 						<div class='select_field'>
 							<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box select_box_full_length', include_blank: '전체'}%>
+						</div>
+						-->
+						<div class='select_field'>
+							<select name="productionorunit" id="form_productionorunit" class="select_box select_box_full_length">
+								<option value="">전체</option>
+								<% @mediafromp_1.each do |key, array| %>
+								<optgroup label="<%= key.to_s %>">
+									<% array.each do |val| %>
+									<option value="<%= val.to_s %>"><%= val.to_s %></option>
+									<% end %>
+							<% end %>
 						</div>
 					</td>
 				</tr>
