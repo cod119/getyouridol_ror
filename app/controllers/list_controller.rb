@@ -1,5 +1,4 @@
 class ListController < ApplicationController
-  autocomplete :idol, :nameko, :full => true
   
   def home
     
