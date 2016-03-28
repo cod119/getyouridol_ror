@@ -21,16 +21,11 @@ class CreateIdols < ActiveRecord::Migration
       t.string :hairstyle2
       t.string :hairstyle3
       t.string :feature
-      t.string :feature2
-      t.string :feature3
       t.string :areafrom
       t.string :productionorunit
-      t.string :productionorunit2
       t.string :mediafromp
       t.string :mediafromp_1
-      t.string :mediafromp_2
       t.string :mediafrom
-      t.string :mediafrom2
 
       t.timestamps null: false
     end

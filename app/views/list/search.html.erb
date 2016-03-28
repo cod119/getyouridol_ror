@@ -42,7 +42,6 @@
 		<div class='select_field'>
 		소속:
 		<div class='select_field'>
-		<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box', include_blank: '모든 값'}%>
 		</div>
 		</div>
 		
@@ -51,15 +50,34 @@
 </fieldset>
 
 -->
+<script>
+  $(function() {
+    new app.Idols;
+  });
+</script>
+
 <div class="box-outter box-outter-search">
 <div class="search-wrapper">
-	
-	<span class="jejugothic italic absolute_font_size">프로필을 완성한 후 '검색'을 누르세요</span>
-	<span class="jejugothic italic absolute_font_size">'상세검색' 버튼을 누르면 상세입력이 가능합니다</span>
-	
+	<div class="text_align_left">
+		<span class="jejugothic italic absolute_font_size">▼이름으로 검색</span> <span class="unit">:: 한/영/일 입력가능</span>
+	</div>
 	<hr></hr>
-
-	<%= form_tag({controller: :list, action: :result}, {class: 'search_table'}) do%>
+	<div>
+		<%= form_tag({controller: :list, action: :result}, {class: 'search_table'}) do %>
+			<div class="idols-search">
+		  		<input type="text" name="name" id="idols-search-txt" placeholder="이름(한/영/일)을 입력하세요" autofocus>
+				<div class="results" id="idols-search-results"></div>
+			</div>
+			<button type="submit" id="name-search-btn" class="search-btn">검색</button>
+		<% end %>
+		<div class="float_clear"></div>
+	</div>
+	<hr></hr>
+	<div class="text_align_left">
+		<span class="jejugothic italic absolute_font_size">▼프로필로 검색</span> <span class="unit">:: '상세검색'을 누르면 상세입력 가능</span>
+	</div>
+	<hr></hr>
+	<%= form_tag({controller: :list, action: :result}, {class: 'search_table'}) do %>
 		<table border="1" cellspacing="0" cellpadding="0" id="search_form" class="profile_table table table_click">
 			<thead>
 				<th colspan="4" class="cell_head kurenai">》PROFILE</th>
@@ -186,7 +204,6 @@
 					<td colspan="2" class="cell_content">
 						<!--
 						<div class='select_field'>
-							<%=select_tag 'productionorunit', options_from_collection_for_select(@productionorunit,:productionorunit,:productionorunit), {id: 'form_productionorunit', class: 'select_box select_box_full_length', include_blank: '전체'}%>
 						</div>
 						-->
 						<div class='select_field'>

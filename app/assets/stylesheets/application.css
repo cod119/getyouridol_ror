@@ -192,7 +192,7 @@ a {
 
 	/*태이블 가장자리 둥글게*/
 .cell_head, .cell_title, .cell_content {
-	border-radius: 0.1rem;
+	border-radius: 0.3rem;
 }
 	/********/
 
@@ -461,6 +461,110 @@ input[type="checkbox"] {
 	width: 100%;
 }
 
+	/* name search*/
+.idols-search input {
+  width: 100%;
+  font-size: 1em;
+  padding: 0 5%;
+  background: transparent;
+  border: 1px solid rgb(169, 169, 169);
+  border-radius: 2em;
+  outline-style: none;
+}
+
+.idols-search input:focus {
+  border: 2px solid #cc3d3d;
+}
+#idols-search-txt {
+	float: left;
+	width: 75%;
+	height: 2rem;
+}
+#idols-search-results {
+	position: absolute;
+	z-index: 5000;
+}
+#name-search-btn {
+	float: right;
+	height: 2rem;
+	width: 13%;
+	font-size: inherit;
+	border-radius: 2rem;
+}
+.float_clear {
+	clear: both;
+}
+.idols-search .results .ui-widget-content {
+  background: #fff;
+  font-size: .9em;
+  padding: .5em 0;
+  border-color: #ddd;
+  box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);
+  line-height: 1.2;
+  max-height: 20em;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.idols-search .results .ui-menu-item {
+  font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
+  font-size: 1rem;
+  /*padding: .4em .6em .4em 6.2em;*/
+  padding: 1.5rem .6rem 1.5rem 6.2rem;
+  position: relative;
+  border: 0;
+  border-left: 5px solid transparent;
+  /*height: 6.5em;*/
+  height: 5em;
+}
+
+.idols-search .results .ui-state-focus {
+  background: #fff;
+  border-left-color: #cc3d3d;
+  font-weight: 300;
+}
+.idols-search .results .ui-menu-item .img {
+  position: absolute;
+  width: 6em;
+  height: 6em;
+  top: .4em;
+  left: 1.5em;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 0.2rem solid #cc3d3d;
+  overflow: hidden;
+}
+
+.idols-search .results .ui-menu-item .nameko {
+  display: block;
+  color: #555;
+}
+
+.idols-search .results .ui-menu-item .nameja {
+  display: block;
+  font-size: .8em;
+  color: #aaa;
+  margin-top: .6em;
+  letter-spacing: 1px;
+}
+
+.idols-search .results .ui-menu-item .nameen {
+  display: block;
+  font-size: .8em;
+  color: #aaa;
+  margin-top: .5em;
+}
+
+.idols-search .results .ui-state-focus .nameen,
+.idols-search .results .ui-state-focus .nameja,
+.idols-search .results .ui-state-focus .nameko {
+  color: #cc3d3d;
+}
+.ui-helper-hidden-accessible {
+	display: none;
+}
+/*****여기까지 name-search*******/
 
 
 /**********도구모음****************/
@@ -531,6 +635,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', end
 	/*반응형 설정의 폰트 사이즈 변경(html 태그에 대한)에 영향을 받지 않도록 inline-block으로 설정
 	예컨대, html에 대해 font-size: 2.5rem을 해도, 함께 2.5배 되는 것이 아니라, 본래 크기를 유지*/
 	display: inline-block;
+}
+.text_align_left {
+	text-align: left;
+}
+.unit {
+	font-weight: normal;
+	font-size: 0.7rem;
 }
 /**********************************/
 

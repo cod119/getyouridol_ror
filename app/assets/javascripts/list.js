@@ -1,3 +1,40 @@
+var app = window.app = {};
+app.Idols = function() {
+  this._input = $('#idols-search-txt');
+  this._initAutocomplete();
+};
+
+app.Idols.prototype = {
+	_initAutocomplete: function() {
+  		this._input
+	    .autocomplete({
+	      source: '/search',
+	      appendTo: '#idols-search-results',
+	      select: $.proxy(this._select, this)
+	    })
+	    .autocomplete('instance')._renderItem = $.proxy(this._render, this);
+	},
+	_select: function(e, ui) {
+		this._input.val(ui.item.nameko);
+		return false;
+	},
+	_render: function(ul, item) {
+	  var markup = [
+	    '<span class="img" style="background-image: url(\'assets/cardpicture/' + item.nameen.toLowerCase() + '.jpg\'), url(\'assets/cardpicturenotfound.jpg\');">',
+	      //'<img src="assets/cardpicture/' + item.nameen.toLowerCase() + '.jpg" />',
+	    '</span>',
+	    '<span class="nameko">' + item.nameko + '</span>',
+	    '<span class="nameja notosansjp">' + item.nameja + '</span>',
+	    '<span class="nameen">' + item.nameen + '</span>'
+	  ];
+	  return $('<li>')
+	    .append(markup.join(''))
+	    .appendTo(ul);
+	}
+};
+
+
+
 
 $(document).ready(function() {
 	

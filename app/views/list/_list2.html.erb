@@ -79,20 +79,25 @@
 							</tr>
 							<tr>
 								<td colspan="1" class="cell_title cell_title_right">소속</td>
-								<td colspan="3" class="cell_content word_narrow"><%=t.productionorunit%>
-									<% if t.productionorunit2 != "0" %>
-										</br><%=t.productionorunit2%>
+								<td colspan="3" class="cell_content word_narrow">
+									<% if t.productionorunit.include?('//') %>
+										<% t.productionorunit.split('//').each do |v| %>
+										<%= v %><br>
+										<% end %>
 									<% end %>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="cell_title cell_title_right">매체</td>
-								<td colspan="3" class="cell_content word_narrow"><%=t.mediafromp%>
+								<td colspan="3" class="cell_content word_narrow">
 									<% if t.mediafromp_1 != "0" %>
-										 <%=t.mediafromp_1%>
-									<% end %>
-									<% if t.mediafromp_2 != "0" %>
-										</br><%=t.mediafromp%> <%=t.mediafromp_2%>
+										<% if t.mediafromp_1.include?('//') %>
+											<% t.mediafromp_1.split('//').each do |v| %>
+												<%= t.mediafromp + " " + v %><br>
+											<% end %>
+										<% end %>
+									<% else %>
+										<%=t.mediafromp%>
 									<% end %>
 								</td>
 							</tr>

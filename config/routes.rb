@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/search' => 'list#search'
   get '/about' => 'list#about'
   post '/result' => 'list#result'
+  get 'list/autocomplete_idol_nameko'
+  
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
