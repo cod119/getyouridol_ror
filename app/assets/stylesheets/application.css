@@ -510,7 +510,7 @@ input[type="checkbox"] {
   font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
   font-size: 1rem;
   /*padding: .4em .6em .4em 6.2em;*/
-  padding: 1.5rem .6rem 1.5rem 6.2rem;
+  padding: 1rem .6rem 1rem 6.2rem;
   position: relative;
   border: 0;
   border-left: 5px solid transparent;
@@ -549,13 +549,15 @@ input[type="checkbox"] {
   letter-spacing: 1px;
 }
 
-.idols-search .results .ui-menu-item .nameen {
+.idols-search .results .ui-menu-item .nameen,
+.idols-search .results .ui-menu-item .cv {
   display: block;
   font-size: .8em;
   color: #aaa;
   margin-top: .5em;
 }
 
+.idols-search .results .ui-state-focus .cv,
 .idols-search .results .ui-state-focus .nameen,
 .idols-search .results .ui-state-focus .nameja,
 .idols-search .results .ui-state-focus .nameko {

@@ -4,6 +4,12 @@ app.Idols = function() {
   this._initAutocomplete();
 };
 
+var langExp = {
+	japanese: "^[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf ]+$",
+	korean: "^[\u1100-\u11FF|\u3130-\u318F|\uA960-\uA97F|\uAC00-\uD7AF|\uD7B0-\uD7FF ]+$",
+	english: "^[a-zA-Z() ]+$"
+}
+
 app.Idols.prototype = {
 	_initAutocomplete: function() {
   		this._input
@@ -15,7 +21,16 @@ app.Idols.prototype = {
 	    .autocomplete('instance')._renderItem = $.proxy(this._render, this);
 	},
 	_select: function(e, ui) {
-		this._input.val(ui.item.nameko);
+		if ($('#idols-search-txt').val().match(langExp.korean)) {
+			this._input.val(ui.item.nameko);	
+		} else if ($('#idols-search-txt').val().match(langExp.japanese)) {
+			this._input.val(ui.item.nameja);
+		} else if ($('#idols-search-txt').val().match(langExp.english)) {
+			this._input.val(ui.item.nameen);
+		} else {
+			this._input.val(ui.item.nameko);
+		}
+		
 		return false;
 	},
 	_render: function(ul, item) {
@@ -25,7 +40,8 @@ app.Idols.prototype = {
 	    '</span>',
 	    '<span class="nameko">' + item.nameko + '</span>',
 	    '<span class="nameja notosansjp">' + item.nameja + '</span>',
-	    '<span class="nameen">' + item.nameen + '</span>'
+	    '<span class="nameen">' + item.nameen + '</span>',
+	    '<span class="cv">' + 'CV : ' + item.cv + '</span>'
 	  ];
 	  return $('<li>')
 	    .append(markup.join(''))
@@ -236,7 +252,7 @@ $(document).ready(function() {
 	// '상세 검색' 누르면, search_form (상단의 폼)에서 소속 행이 사라지고 추가 검색 테이블 출력
 	// 소속사2의 체크박스의 체크가 모두 사라짐.
 	// 소속사 1의 셀렉트 박스의 선택값을 초기화
-	$('#search_form2').on('click', 'button', function(e) {
+	$('#search_form2').on('click', 'button.search_additional', function(e) {
 		$('#productionorunit_cell_1').hide(0);
 		$('#search_form2').find('thead').hide(0);
 		e.stopPropagation;

@@ -54,7 +54,7 @@ class ListController < ApplicationController
     #이름 검색창으로부터 검색했는지 여부를 판단
     if params[:name]
       #이름
-      @idols = @idols.where('nameko LIKE :name OR nameja LIKE :name OR nameen LIKE :name', name: "%#{params[:name]}%")
+      @idols = @idols.where('nameko LIKE :name OR nameja LIKE :name OR nameen LIKE :name OR cv LIKE :name', name: "%#{params[:name]}%")
     else  
       
       #성별
