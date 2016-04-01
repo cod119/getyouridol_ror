@@ -115,7 +115,7 @@ a {
 	margin-top: 0.5rem;
 	width: 60%;
 	height: 5rem;
-	background-position: center center;
+	background-position: center top;
 	background-size: cover;
 	border: 0.5rem solid #cc3d3d;
 	border-radius: 50%;
@@ -143,6 +143,7 @@ a {
 .profile_table {
 	margin: auto;
 	width: 100%;
+	max-width: 30rem;
 	border-collapse: separate;
     border-spacing: 0.2rem;
     font-family: 'Jeju Gothic', 'Nanum Gothic', sans-serif;
