@@ -587,7 +587,7 @@ background: linear-gradient(to bottom, #cc3d3d 4%,#e50043 88%,#6d0019 100%); /* 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc3d3d', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
 }
 .kurenai {
-	background-color: #E50043;
+	background-color: #d7003a;
 }
 .kurenai-down {
 	/* 아래와 같은색 background: rgb(211,43,63);*/
